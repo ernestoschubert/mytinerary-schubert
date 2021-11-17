@@ -1,0 +1,94 @@
+/* HEADER */
+
+header, main, footer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    position: fixed;
+    min-width: 100%;
+    justify-content: space-between;
+    background-color: #00000071;
+    padding: .5rem 2rem;
+}
+/* 
+.header-logo {
+    
+}
+
+.user {
+    
+} */
+
+.header-nav {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.76);
+}
+
+
+/* MAIN  */
+
+main {
+    /* height: 80vh; */
+    flex-direction: column;
+}
+
+.main-fv, .main-sv, .main-tv {
+    /* height: 80vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-fv {
+    background-image: url("./assets/shanghai_sunset.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    min-width:100% ;
+}
+
+.main-sv {
+    background-image: url("./assets/borabora_at_night.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    min-width:100% ;
+}
+
+.main-tv {
+    background-image: url("./assets/world-map.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    min-width:100%;
+}
+.my {
+    color: rgba(25,104,137,1);
+}
+.tine {
+    color: rgba(240,206,26,1);
+}
+.rary {
+    color: rgba(129,204,202,1);
+}
+
+
+/* FOOTER */
+
+footer {
+    height: 10vh;
+}
