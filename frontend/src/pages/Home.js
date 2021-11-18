@@ -6,40 +6,47 @@ import Footer from '../components/Footer.js';
 class Home extends React.Component {
     
     render(){
-
-        const logo = "./assets/mytinerary_logo.png"
-        const arrowDown = "./assets/arrow_down.svg"
+        const [logo, arrowDown, plane] = [
+            "./assets/mytinerary_logo.png",
+            "./assets/arrow_down.svg",
+            "./assets/plane.png"
+        ];
         
         return (
-                <main>
-                    <div className="main-fv">
-                        <div className="w-container">
-                            <img src={logo} width="100"/>
-                            <h1 className="w-h1">Welcome to <span className="my">My</span><span className="tine">Tine</span><span className="rary">rary</span></h1>
+
+                <div className="container-home">
+                    <Header/>
+                    <main>
+                        <div className="main-fv">
+                            <div className="hero-container">
+                                <img src={logo} width="100"  alt="MyTinerary Logo"/>
+                                <h1 className="hero-h1">Welcome to <span className="my">My</span><span className="tine">Tine</span><span className="rary">rary</span></h1>
+                            </div>
+                            <div >
+                                <p className="hero-text">Find your perfect trip, designed by insiders who know and love their cities!</p>
+                            </div>
+                            <div className="next-section">
+                                <a id="firstArrow" href="#sv"><img src={arrowDown} width="40" alt="Arrow down to next section"/></a>
+                            </div>
+                            <div className="plane">
+                                <img src={plane} alt="Plane img"/>
+                            </div>
                         </div>
-                        <div >
-                            <p className="w-text">Find your perfect trip, designed by insiders who know and love their cities!</p>
+                        {/* <div className="box-conector">
+
+                        </div> */}
+                        <div id="sv" className="main-sv">
+                            <div >
+                                <p className="hero-text">Second View</p>
+                            </div>
+                            
                         </div>
-                        <div className="next-section">
-                            <a id="firstArrow" href="#sv"><img src={arrowDown} width="40"/></a>
-                        </div>
-                    </div>
-                    <div id="sv" className="main-sv">
-                        <div >
-                            <p className="w-text">Second View</p>
-                        </div>
-                        <div className="next-section">
-                            <a href="#tv"><img src={arrowDown} width="40"/></a>
-                        </div>
-                    </div>
-                    <div id="tv" className="main-tv">
-                        <div >
-                            <p className="w-text">Third View</p>
-                        </div>
-                    </div>
-                    
-                </main>            
+                        
+                    </main> 
+                    <Footer/>          
+                </div> 
         )
     }
 }
+
 export default Home;

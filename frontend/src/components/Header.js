@@ -9,11 +9,11 @@ const Header = () => {
         <div className='Header'>
             <header className="header-style">
                 <div className="header-logo">
-                    <img src={logo} width="50" alt="Logo MyTinerary"/>
+                    <img src={logo} alt="Logo MyTinerary"/>
                 </div>
                 <nav className="header-nav">
-                    <a href="#">Home</a>
-                    <a href="#">Cities</a>
+                    <a href="#Home">Home</a>
+                    <a href="#Cities">Cities</a>
                 </nav>
                 <div>
                     <div className="user">
