@@ -1,3 +1,33 @@
+.next-section {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.788);
+    border-radius: .8rem;
+    padding: .4rem .2rem 0 .2rem;
+    align-items: flex-end;
+    transition: .4s;
+}
+
+#firstArrow {
+    position: absolute;
+    bottom: 2vh;
+    right: 20vw;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.788);
+    border-radius: .8rem;
+    padding: .4rem .2rem 0 .2rem;
+    align-items: flex-end;
+    transition: .4s;
+}
+
+.next-section:hover {
+    background-color: rgba(110, 110, 110, 0.788);
+}
+
+
+nav a:hover {
+    text-shadow: 0 0 4px #000000;
+    transition: .2s;
+}
 /* HEADER */
 
 header, main, footer {
@@ -11,17 +41,9 @@ header{
     position: fixed;
     min-width: 100%;
     justify-content: space-between;
-    background-color: #00000071;
+    background-color: #66666693;
     padding: .5rem 2rem;
 }
-/* 
-.header-logo {
-    
-}
-
-.user {
-    
-} */
 
 .header-nav {
     width: 200px;
@@ -34,19 +56,17 @@ header{
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.76);
+    text-shadow: 0px 0px 12px rgba(128, 128, 128, 0.5),0px 0px 7px rgba(242, 242, 242, 0.5);
 }
 
 
 /* MAIN  */
 
 main {
-    /* height: 80vh; */
     flex-direction: column;
 }
 
 .main-fv, .main-sv, .main-tv {
-    /* height: 80vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,25 +77,27 @@ main {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 110vh;
     min-width:100% ;
+    flex-direction: column;
+}
+.w-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: rgb(255 255 255 / 9%);
+    padding: 4rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 15px rgb(255 255 255 / 21%);
+    margin-bottom: 1rem;
 }
 
-.main-sv {
-    background-image: url("./assets/borabora_at_night.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    min-width:100% ;
+.w-h1 {
+    color: #ffffff;
+    font-size: 3.4rem;
+    text-shadow: 0px 0px 12px rgba(128, 128, 128, 0.5),0px 0px 7px rgba(242, 242, 242, 0.5), 0 0 2px #000000d5;
 }
 
-.main-tv {
-    background-image: url("./assets/world-map.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    min-width:100%;
-}
 .my {
     color: rgba(25,104,137,1);
 }
@@ -85,10 +107,62 @@ main {
 .rary {
     color: rgba(129,204,202,1);
 }
+.w-text {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 4px #000000;
+    background-color: rgba(0, 0, 0, 0.507);
+    border-radius: 0.5rem;
+    text-shadow: 0px 0px 12px rgba(128, 128, 128, 0.5), 0 0 4px #000000d5;
+    padding: 0.5rem 1rem;
+    margin-top: 5vh;
+    font-size: 1.4rem;
+}
+
+.main-sv {
+    background-image: url("./assets/city_sunset.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 110vh;
+    min-width: 100%;
+    flex-direction: column;
+}
+
+.main-tv {
+    background-image: url("./assets/world-map.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 92vh;
+    min-width:100%;
+}
 
 
 /* FOOTER */
 
 footer {
-    height: 10vh;
+    height: 8vh;
+    justify-content: space-around;
+    background-color: #000000d5;
+    color: #ffffff;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.footer-nav {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.socials  nav{
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
 }
