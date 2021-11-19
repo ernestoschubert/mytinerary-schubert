@@ -2,8 +2,9 @@ import React from 'react';
 import '../App.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
+import Carousel from '../components/Carousel.js';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
     
     render(){
         const [logo, arrowDown, plane] = [
@@ -38,6 +39,7 @@ class Home extends React.Component {
                         <div id="sv" className="main-sv">
                             <div >
                                 <p className="hero-text">Second View</p>
+                                <Carousel/>
                             </div>
                             
                         </div>
@@ -48,5 +50,3 @@ class Home extends React.Component {
         )
     }
 }
-
-export default Home;
