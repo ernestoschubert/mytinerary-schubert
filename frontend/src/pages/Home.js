@@ -27,19 +27,22 @@ export default class Home extends React.Component {
                                 <p className="hero-text">Find your perfect trip, designed by insiders who know and love their cities!</p>
                             </div>
                             <div className="next-section">
-                                <a id="firstArrow" href="#sv"><img src={arrowDown} width="40" alt="Arrow down to next section"/></a>
+                                <a id="arrowDown" href="#sv"><img src={arrowDown} width="40" alt="Arrow down to next section"/></a>
                             </div>
                             <div className="plane">
                                 <img src={plane} alt="Plane img"/>
                             </div>
                         </div>
-                        {/* <div className="box-conector">
-
-                        </div> */}
                         <div id="sv" className="main-sv">
-                            <div >
-                                <p className="hero-text">Second View</p>
-                                <Carousel/>
+                            <div className="container-cta-slider">
+                                <div className="call-to-action">
+                                    <p className="hero-text">What are you waiting for your dreams trip! Discover all our trips clicking</p>                             
+                                    <button>HERE</button>
+                                </div>
+                                <div>
+                                    <h2 className="hero-h1">Popular MyTineraries</h2>
+                                    <Carousel/>
+                                </div>
                             </div>
                             
                         </div>

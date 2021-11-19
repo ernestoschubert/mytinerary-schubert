@@ -5,32 +5,33 @@
 @media (min-width: 600px) {
     .next-section {
         display: flex;
-        background-color: rgba(0, 0, 0, 0.788);
+        /* background-color: rgba(0, 0, 0, 0.788); */
         border-radius: .8rem;
         padding: .4rem .2rem 0 .2rem;
         align-items: flex-end;
         transition: .4s;
     }
     
-    #firstArrow {
+    #arrowDown {
         position: absolute;
         bottom: 2vh;
         right: 20vw;
         display: flex;
-        background-color: rgba(0, 0, 0, 0.788);
+        background-color: rgba(146, 193, 255, 0.788);
         border-radius: .8rem;
-        padding: .4rem .2rem 0 .2rem;
+        padding: .4rem .3rem .2rem .3rem;
         align-items: flex-end;
         transition: .4s;
     }
     
-    .next-section:hover {
-        background-color: rgba(110, 110, 110, 0.788);
+    #arrowDown:hover {
+        background-color: rgba(58, 58, 58, 0.788);
     }
 }
 
 nav a:hover {
-    text-shadow: 0 0 4px #000000;
+    text-shadow: 0 0 4px #000000af;
+    color: #6495ed;
     transition: .2s;
 }
 /* HEADER */
@@ -125,7 +126,6 @@ main {
     flex-direction: column;
 }
 .hero-container {
-    /* display: flex; */
     flex-wrap: wrap;
     align-items: center;
     max-width: 100%;
@@ -152,7 +152,6 @@ main {
 }
 .hero-h1 {
     color: #ffffff;
-    /* font-size: 3.4rem; */
     text-shadow: 0px 0px 12px rgba(128, 128, 128, 0.5),0px 0px 7px rgba(242, 242, 242, 0.5), 0 0 2px #000000d5;
     margin: 0 .5rem;
 }
@@ -182,11 +181,19 @@ main {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    height: 100vh;
+    height: auto;
     min-width: 100%;
     flex-direction: column;
 }
 
+@media (min-width: 768px) {
+    .main-sv {
+        height: auto;
+    }
+}
+.container-cta-slider {
+    margin-top: 15vh;
+}
 .plane img{
     position: relative;
     top: 13vh;
@@ -199,31 +206,7 @@ main {
         max-width: 35vw;
     }
 }
-/* @media (min-height: 440px) {
-    .plane img {
-        bottom: -18vh
-    }
-}
-@media (min-height: 480px) {
-    .plane img {
-        bottom:-15vh;
-    }
-}
-@media (min-height: 620px) {
-    .plane img {
-        bottom:-2vh;
-    }
-}
-@media (min-height: 720px) {
-    .plane img {
-        bottom:-6vh;
-    }
-}
-@media (min-height: 800px) {
-    .plane img {
-        bottom:-12vh;
-    }
-} */
+
 
 /* FOOTER */
 
@@ -282,4 +265,18 @@ footer a {
 
 .copy p {
     margin-bottom: .3rem;
+}
+
+
+.first-slade  img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.slade-img {
+    margin: 1rem;
+    border: 1px solid black;
+    width: 100%;
 }

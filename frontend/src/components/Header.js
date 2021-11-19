@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropdown from './Dropdown.js';
 
 const Header = () => {
 
@@ -17,7 +18,7 @@ const Header = () => {
                 </nav>
                 <div>
                     <div className="user">
-                        <img src={userIcon} alt="Profile user icon"/>
+                        <Dropdown/>
                     </div>
                 </div>
             </header>
