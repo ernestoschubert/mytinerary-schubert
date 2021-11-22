@@ -2,6 +2,8 @@ import React from 'react';
 import '../App.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Carousel from '../components/Carouselswiper';
 
 
@@ -36,8 +38,8 @@ export default class Home extends React.Component {
                         </div>
                         <div id="sv" className="main-sv">
                             <div className="call-to-action">
-                                <p className="cta-text">Choose your dreams trip! <br/> Discover all our trips clicking</p>                             
-                                <button className="fs-5 p-2 ps-4 pe-4 bg-danger btn ">HERE</button>
+                                <p className="cta-text">Choose your dreams trip! <br/> Discover all our trips</p>                             
+                                <Button variant="warning" className="fs-5 p-2 ps-4 pe-4 btn-cta"><Link to="cities">More</Link></Button>
                             </div>
                             <div className="container-carousel">
                                 <h2 className="carousel-h2">Popular MyTineraries</h2>

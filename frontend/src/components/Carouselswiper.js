@@ -101,42 +101,42 @@ const CarouselCities = () => {
           spaceBetween={30}
           slidesPerView={1}
           navigation
-        //   autoplay={{
-        //     delay: 3500,
-        //     disableOnInteraction: false,
-        //   }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
         >
-          <SwiperSlide className="slide swip-slid">
+          <SwiperSlide className="slide city-cont">
             {citiesFirstSlide.map((data) => {
               return (
-                <div className="slide-content">
-                  <div className="user-image" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
+                <div className="slider-content">
+                  <div className="city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
                     <h3>{data.city + " - " + data.country}</h3>  
                   </div>  
                 </div>
               );
             })}
           </SwiperSlide>
-          <SwiperSlide className="slide swip-slid">
+          <SwiperSlide className="slide city-cont">
             {citiesSecondSlide.map((data) => {
               return (
-                <div className="slide-content">
-                  <div className="user-image" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
+                <div>
+                  <div className="city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
                     <h3>{data.city + " - " + data.country}</h3>  
                   </div>  
                 </div>
               );
             })}
           </SwiperSlide>
-          <SwiperSlide className="slide swip-slid">
+          <SwiperSlide className="slide city-cont">
             {citiesThirdSlide.map((data) => {
               return (
-                <div className="slide-content">
-                  <div className="user-image" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
+                <div className="slider-content">
+                  <div className="city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
                     <h3>{data.city + " - " + data.country}</h3>  
                   </div>  
                 </div>

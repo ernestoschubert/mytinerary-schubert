@@ -1,10 +1,11 @@
 import React from 'react';
 import Dropdown from './Dropdown.js';
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
     const logo = "./assets/mytinerary_logo.png";
-    const userIcon = "./assets/account_circle_white_36dp.svg";
+    // const userIcon = "./assets/account_circle_white_36dp.svg";
 
     return (
         <div className='Header'>
@@ -13,8 +14,8 @@ const Header = () => {
                     <img src={logo} alt="Logo MyTinerary"/>
                 </div>
                 <nav className="header-nav">
-                    <a href="#Home">Home</a>
-                    <a href="#Cities">Cities</a>
+                    <Link to="/">Home</Link>
+                    <Link to="cities">Cities</Link>
                 </nav>
                 <div>
                     <div className="user">

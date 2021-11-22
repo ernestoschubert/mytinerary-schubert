@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 const Footer = () => {
     
@@ -17,15 +19,15 @@ const Footer = () => {
                         <img src={logo} alt="Logo MyTinerary"/>
                     </div>
                     <nav>
-                        <a href="#Home">Home</a>
-                        <a href="#Cities">Cities</a>
+                        <Link to="/">Home</Link>
+                        <Link to="cities">Cities</Link>
                     </nav>
                 </div>
                 <div class="socials">
                     <nav>
-                        <a href="#IG"><img src={ig} alt="logo instagram"/></a>
-                        <a href="#FB"><img src={fb} alt="logo facebook"/></a>
-                        <a href="#TW"><img src={tw} alt="logo twitter"/></a>
+                        <a href="#IG" target="_new"><img src={ig} alt="logo instagram"/></a>
+                        <a href="#FB" target="_new"><img src={fb} alt="logo facebook"/></a>
+                        <a href="#TW" target="_new"><img src={tw} alt="logo twitter"/></a>
                     </nav>
                 </div>
             </div>

@@ -129,7 +129,6 @@ const Carousels = () => {
                             );
                         })}
                     </div>
-                    
                 </Carousel.Item>
             </Carousel>
         </div>
