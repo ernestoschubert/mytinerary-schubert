@@ -2,7 +2,8 @@ import React from 'react';
 import '../App.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
-import Carousel from '../components/Carousel.js';
+import Carousel from '../components/Carouselswiper';
+
 
 export default class Home extends React.Component {
     
@@ -34,17 +35,16 @@ export default class Home extends React.Component {
                             </div>
                         </div>
                         <div id="sv" className="main-sv">
-                            <div className="container-cta-slider">
-                                <div className="call-to-action">
-                                    <p className="hero-text">What are you waiting for your dreams trip! Discover all our trips clicking</p>                             
-                                    <button>HERE</button>
-                                </div>
-                                <div>
-                                    <h2 className="hero-h1">Popular MyTineraries</h2>
+                            <div className="call-to-action">
+                                <p className="cta-text">Choose your dreams trip! <br/> Discover all our trips clicking</p>                             
+                                <button className="fs-5 p-2 ps-4 pe-4 bg-danger btn ">HERE</button>
+                            </div>
+                            <div className="container-carousel">
+                                <h2 className="carousel-h2">Popular MyTineraries</h2>
+                                <div className="container-slider">
                                     <Carousel/>
                                 </div>
-                            </div>
-                            
+                            </div>    
                         </div>
                         
                     </main> 

@@ -2,153 +2,138 @@ import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 
 const Carousels = () => {
-
+    
+    const citiesFirstSlide = [
+        {
+          id: 1,
+          city: "Mykonos",
+          country: "Grecee",
+          src: require("../assets/mykonos.jpg").default,
+        },
+        {
+          id: 2,
+          city: "Cancun",
+          country: "Mexico",
+          src: require("../assets/cancun.jpeg").default,
+        },
+        {
+          id: 3,
+          city: "Pamukkale",
+          country: "Turkey",
+          src: require("../assets/pamukkale.jpg").default,
+        },
+        {
+          id: 4,
+          city: "Abu Dhabi",
+          country: "Arab Emirates",
+          src: require("../assets/abudhabi.jpg").default,
+        },
+      ];
+      
+      const citiesSecondSlide = [
+        {
+          id: 5,
+          city: "New York",
+          country: "United States",
+          src: require("../assets/newyork.jpg").default,
+        },
+        {
+          id: 6,
+          city: "Barcelona",
+          country: "Spain",    
+          src: require("../assets/barcelona.jpg").default,
+        },
+        {
+          id: 7,
+          city: "London",
+          country: "England",
+          src: require("../assets/london.jpg").default,
+        },
+        {
+          id: 8,
+          city: "Hong Kong",
+          country: "China",
+          src: require("../assets/hongkong.jpg").default,
+        },
+      ];
+      
+      const citiesThirdSlide = [
+        {
+          id: 9,
+          city: "Machu Picchu",
+          country: "Peru",
+          src: require("../assets/machupicchu.jpg").default,
+        },
+        {
+          id: 10,
+          city: "Isla de Pascua",
+          country: "Chile",
+          src: require("../assets/isladepascua.jpg").default,
+        },
+        {
+          id: 11,
+          city: "Cairo",
+          country: "Egypt",
+          src: require("../assets/cairopyramids.jpg").default,
+      
+        },
+        {
+          id: 12,
+          city: "Rome",
+          country: "Italy",
+          src: require("../assets/coliseum.jpg").default,
+      
+        },
+      ];
 
     return (
-        <Carousel fade>
-            <Carousel.Item>
-            <div className="container fluid first-slide">
-                    <div className="row">
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/instagram.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/instagram.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/instagram.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/instagram.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
+        <div className="container-fluid">
+            <Carousel>
+                <Carousel.Item>
+                    <div className="row justify-content-center">
+                        {citiesFirstSlide.map((data) => {
+                            return (
+                                <div className="col-10 col-md-6">
+                                    <div className="d-block w-100 m-2 city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}}>
+                                        <h3>{data.city + " - " + data.country}</h3>
+                                    </div>  
+                                </div>
+                            );
+                        })}
                     </div>
-                </div>
-            </Carousel.Item>
-            <Carousel.Item>
-                <div className="container fluid first-slide">
-                    <div className="row">
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/twitter.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
+                    
+                </Carousel.Item>
+                <Carousel.Item>
+                        <div className="row justify-content-center">
+                            {citiesSecondSlide.map((data) => {
+                                return (
+                                    <div className="col-10 col-md-6">
+                                        <div className="d-block w-100 m-2 city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}}>
+                                            <h3>{data.city + " - " + data.country}</h3>
+                                        </div>  
+                                    </div>
+                                );
+                            })}
                         </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/twitter.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/twitter.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/twitter.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
+                    
+                </Carousel.Item>
+                <Carousel.Item>
+                    <div className="row justify-content-center">
+                        {citiesThirdSlide.map((data) => {
+                            return (
+                                <div className="col-10 col-md-6">
+                                    <div className="d-block w-100 m-2 city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}}>
+                                        <h3>{data.city + " - " + data.country}</h3>
+                                    </div>  
+                                </div>
+                            );
+                        })}
                     </div>
-                </div>
-            </Carousel.Item>
-            <Carousel.Item>
-            <div className="container fluid first-slide">
-                    <div className="row">
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/facebook.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/facebook.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/facebook.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                        <div className="col-10 col-md-6">
-                            <img className="d-block slade-img" src="./assets/facebook.png" alt="Second slide" />
-                            <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            </Carousel.Caption>
-                        </div>
-                    </div>
-                </div>
-            </Carousel.Item>
-        </Carousel>
-
+                    
+                </Carousel.Item>
+            </Carousel>
+        </div>
     )
 }
-
-// function ControlledCarousel() {
-//     const [index, setIndex] = useState(0);
-  
-//     const handleSelect = (selectedIndex, e) => {
-//       setIndex(selectedIndex);
-//     };
-  
-//     return (
-//       <Carousel activeIndex={index} onSelect={handleSelect}>
-//         <Carousel.Item>
-//           <img
-//             className="d-block w-100"
-//             src="holder.js/800x400?text=First slide&bg=373940"
-//             alt="First slide"
-//           />
-//           <Carousel.Caption>
-//             <h3>First slide label</h3>
-//             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-//           </Carousel.Caption>
-//         </Carousel.Item>
-//         <Carousel.Item>
-//           <img
-//             className="d-block w-100"
-//             src="holder.js/800x400?text=Second slide&bg=282c34"
-//             alt="Second slide"
-//           />
-  
-//           <Carousel.Caption>
-//             <h3>Second slide label</h3>
-//             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-//           </Carousel.Caption>
-//         </Carousel.Item>
-//         <Carousel.Item>
-//           <img
-//             className="d-block w-100"
-//             src="holder.js/800x400?text=Third slide&bg=20232a"
-//             alt="Third slide"
-//           />
-  
-//           <Carousel.Caption>
-//             <h3>Third slide label</h3>
-//             <p>
-//               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-//             </p>
-//           </Carousel.Caption>
-//         </Carousel.Item>
-//       </Carousel>
-//     );
-//   }
 
 export default Carousels;
