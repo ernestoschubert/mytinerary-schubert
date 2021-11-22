@@ -92,12 +92,12 @@ header{
         background-color: #00000093;
         padding: .5rem 2rem;
     }
-    .header-nav a {
+    .header-nav, .link {
         margin-bottom: 0;
     }
 }
 
-.header-nav a {
+.header-nav, .link {
     color: #ffffff;
     text-decoration: none;
     text-transform: uppercase;
@@ -215,13 +215,16 @@ main {
     padding: 1rem 3rem;
 }
 .btn-cta {
-    box-shadow: 0 0 5px #000000b2;
+    color: #ffffff;
+    text-shadow: 0 0 3px #0000006b;
+    box-shadow: 0 0 5px #8f8f8fc7;
     transition: .5s;
 }
 .btn-cta:hover {
+    color: #00000091;
     translate: ease all .5s;
     transform: scale(1.05);
-    box-shadow: 2px 2px 10px #000000c5;
+    box-shadow: 1px 1px 5px #8f8f8fc7;
 }
 /* .container-carousel {
     max-width: 100%;
@@ -269,13 +272,13 @@ main {
     position: relative;
     top: 13vh;
     
-    max-width: 300px;
+    max-width: 250px;
     z-index: 1;
     justify-content: flex-start;
 }
 @media (min-width: 800px) {
     .plane img {
-        max-width: 35vw;
+        max-width: 30vw;
     }
 }
 
@@ -284,11 +287,6 @@ main {
 
 .carousel-container {
     width: 95vw;  
-}
-
-.car-cont {
-    display: flex;
-    justify-content: center;
 }
 
 .city-cont {
@@ -345,7 +343,7 @@ main {
 
 @media (min-width: 960px) {
     .carousel-container {
-        width: 90vw;
+        width: 95vw;
     }
     .city-img {
         width: 40vw;

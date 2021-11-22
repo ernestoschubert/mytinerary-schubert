@@ -95,7 +95,6 @@ const citiesThirdSlide = [
 const CarouselCities = () => {
 
   return (
-    <div className="car-cont">
       <div className="carousel-container">
         <Swiper
           spaceBetween={30}
@@ -145,7 +144,6 @@ const CarouselCities = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-    </div>
   );
 };
 

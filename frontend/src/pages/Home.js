@@ -38,8 +38,8 @@ export default class Home extends React.Component {
                         </div>
                         <div id="sv" className="main-sv">
                             <div className="call-to-action">
-                                <p className="cta-text">Choose your dreams trip! <br/> Discover all our trips</p>                             
-                                <Button variant="warning" className="fs-5 p-2 ps-4 pe-4 btn-cta"><Link to="cities">More</Link></Button>
+                                <p className="cta-text">Choose your dreams trip! </p>                             
+                                <Link className="link" to="cities"><Button variant="warning" className="fs-5 p-2 ps-4 pe-4 mt-2 btn-cta">Discover all our trips</Button></Link>
                             </div>
                             <div className="container-carousel">
                                 <h2 className="carousel-h2">Popular MyTineraries</h2>

@@ -1,7 +1,7 @@
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
 function Dropdown() {
-    const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
+    // const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
     
     const userIcon = "./assets/account_circle_white_36dp.svg"
     const imgUser = {

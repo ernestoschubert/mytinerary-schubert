@@ -11,11 +11,12 @@ const Header = () => {
         <div className='Header'>
             <header className="header-style">
                 <div className="header-logo">
-                    <img src={logo} alt="Logo MyTinerary"/>
+                <Link className="link" to="/"><img src={logo} alt="Logo MyTinerary"/></Link>
+                    
                 </div>
                 <nav className="header-nav">
-                    <Link to="/">Home</Link>
-                    <Link to="cities">Cities</Link>
+                    <Link className="link" to="/">Home</Link>
+                    <Link className="link" to="cities">Cities</Link>
                 </nav>
                 <div>
                     <div className="user">

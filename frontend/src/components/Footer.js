@@ -16,18 +16,18 @@ const Footer = () => {
             <div className="cont-nav-socials">
                 <div className="footer-nav">
                     <div className="footer-logo">
-                        <img src={logo} alt="Logo MyTinerary"/>
+                        <Link className="link" to="/"><img src={logo} alt="Logo MyTinerary"/></Link>
                     </div>
                     <nav>
-                        <Link to="/">Home</Link>
-                        <Link to="cities">Cities</Link>
+                        <Link className="link" to="/">Home</Link>
+                        <Link className="link ms-4" to="cities">Cities</Link>
                     </nav>
                 </div>
                 <div class="socials">
                     <nav>
-                        <a href="#IG" target="_new"><img src={ig} alt="logo instagram"/></a>
-                        <a href="#FB" target="_new"><img src={fb} alt="logo facebook"/></a>
-                        <a href="#TW" target="_new"><img src={tw} alt="logo twitter"/></a>
+                        <a href="https://www.instagram.com" target="_new"><img src={ig} alt="logo instagram"/></a>
+                        <a href="https://www.facebook.com" target="_new"><img src={fb} alt="logo facebook"/></a>
+                        <a href="https://www.twitter.com" target="_new"><img src={tw} alt="logo twitter"/></a>
                     </nav>
                 </div>
             </div>
