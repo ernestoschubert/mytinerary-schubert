@@ -63,7 +63,7 @@ header{
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    background-color: #000000c2;
+    background-color: #00205ade;
     padding: .5rem 2rem;
     z-index: 2;
 }
@@ -207,16 +207,23 @@ main {
 .call-to-action {
     margin-top: 13vh;
     margin-bottom: 3rem;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50%;
+    justify-content: center;
+    background-image: url(./assets/worldmap.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    text-shadow: 0 0 3px #000000da;
     font-size: 1.2rem;
-    background-color: #ffffffc7;
     border-radius: .5rem;
-    background-color: #000000c7;
     padding: 1rem 3rem;
 }
 .btn-cta {
     color: #ffffff;
-    text-shadow: 0 0 3px #0000006b;
+    text-shadow: 0 0 3px #000000c2;
     box-shadow: 0 0 5px #8f8f8fc7;
     transition: .5s;
 }
