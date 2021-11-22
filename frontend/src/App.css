@@ -67,7 +67,7 @@ header{
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    background-color: #00205ade;
+    background-color: #001233d3;
     padding: .5rem 2rem;
     z-index: 2;
 }
@@ -93,7 +93,6 @@ header{
         position: fixed;
         min-width: 100%;
         justify-content: space-between;
-        background-color: #00000093;
         padding: .5rem 2rem;
     }
     .header-nav, .link {

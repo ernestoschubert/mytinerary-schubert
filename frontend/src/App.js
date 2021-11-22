@@ -9,19 +9,6 @@ import {
   Route
 } from "react-router-dom";
 
-
-
-// const App = () => {
-//   return (
-//     <div className="App">
-//       <Home/>
-//       {/* <Cities/> */}
-//     </div>
-//   );
-// }
-
-// export default App;
-
 const App = () => {
   return (
     <BrowserRouter>
