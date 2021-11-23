@@ -1,7 +1,8 @@
 import React from "react";
-import CarouselCities from "./Carouselswiper";
+import CarouselSwiper from "./Carouselswiper";
 
-const citiesFirstSlide = [
+const cities = [
+[
     {
     id: 1,
     city: "Mykonos",
@@ -26,8 +27,8 @@ const citiesFirstSlide = [
     country: "Arab Emirates",
     src: require("../assets/abudhabi.jpg").default,
     },
-];
-const citiesSecondSlide = [
+],
+[
     {
     id: 5,
     city: "New York",
@@ -52,8 +53,8 @@ const citiesSecondSlide = [
     country: "China",
     src: require("../assets/hongkong.jpg").default,
     },
-];
-const citiesThirdSlide = [
+],
+[
     {
     id: 9,
     city: "Machu Picchu",
@@ -80,17 +81,13 @@ const citiesThirdSlide = [
     src: require("../assets/coliseum.jpg").default,
 
     }
-];
+]
+]
 
-
-export default function ArraySlide() {
+export default function SliderRender() {
     return (
-        <CarouselCities 
-            citiesFirstSlide={citiesFirstSlide}
-            
-            citiesSecondSlide={citiesSecondSlide}
-            
-            citiesThirdSlide = {citiesThirdSlide}
+        <CarouselSwiper
+            cities={cities}
         />
     )
     

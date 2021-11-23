@@ -23,7 +23,7 @@ const Footer = () => {
                         <Link className="link ms-4" to="/cities">Cities</Link>
                     </nav>
                 </div>
-                <div class="socials">
+                <div className="socials">
                     <nav>
                         <a href="https://www.instagram.com" target="_new"><img src={ig} alt="logo instagram"/></a>
                         <a href="https://www.facebook.com" target="_new"><img src={fb} alt="logo facebook"/></a>

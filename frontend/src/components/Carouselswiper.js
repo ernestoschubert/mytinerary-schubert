@@ -10,33 +10,24 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
 
 
-const CarouselCities = (props) => {
-  const citiesFirstSlide = props.citiesFirstSlide;
-  const citiesSecondSlide = props.citiesSecondSlide;
-  const citiesThirdSlide = props.citiesThirdSlide;
+const CarouselSwiper = (props) => {
+  
+  const cities = props.cities;
 
-  const firstSlide = citiesFirstSlide.map((data) => {
+  const sliders = cities.map( (city, index) => {
     return (
-        <div className="city-img" key={data.id} style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
-          <h3>{data.city + " - " + data.country}</h3>  
-        </div>  
-    );
-  });
-  const secondSlide =citiesSecondSlide.map((data) => {
-    return (
-        <div className="city-img" key={data.id} style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
-          <h3>{data.city + " - " + data.country}</h3>  
-        </div>  
-    );
-  });
-  const thirdSlide = citiesThirdSlide.map((data) => {
-    return (
-        <div className="city-img" key={data.id} style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
-          <h3>{data.city + " - " + data.country}</h3>  
-        </div>  
-    );
-  });
-
+          <SwiperSlide key={index} className="slide city-cont">
+          {city.map((data) => {
+            return (
+                <div className="city-img" key={data.id} style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
+                  <h3>{data.city + " - " + data.country}</h3>  
+                </div>  
+              );
+            })}
+          </SwiperSlide>
+        )
+      })
+  
   return (
       <div className="carousel-container">
         <Swiper
@@ -52,18 +43,12 @@ const CarouselCities = (props) => {
           // onSlideChange={() => console.log("slide change")}
           // onSwiper={(swiper) => console.log(swiper)}
         >
-          <SwiperSlide className="slide city-cont">
-            {firstSlide}
-          </SwiperSlide>
-          <SwiperSlide className="slide city-cont">
-            {secondSlide}
-          </SwiperSlide>
-          <SwiperSlide className="slide city-cont">
-            {thirdSlide}
-          </SwiperSlide>
+
+            {sliders}
+
         </Swiper>
       </div>
   );
 };
 
-export default CarouselCities 
+export default CarouselSwiper; 
