@@ -11,7 +11,7 @@ function Dropdown() {
       
         <NavDropdown title={imgUser.img} id="nav-dropdown" menuVariant="dark">
           <NavDropdown.Item eventKey="1">Log in</NavDropdown.Item>
-          <NavDropdown.Item eventKey="2">Sign in</NavDropdown.Item>
+          <NavDropdown.Item eventKey="2">Sign Up</NavDropdown.Item>
         </NavDropdown>
     );
   }
