@@ -4,7 +4,8 @@ import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import Carousel from '../components/Carouselswiper';
+// import Carousel from '../components/Carouselswiper';
+import ArraySlide from '../components/Slider';
 
 
 export default class Home extends React.Component {
@@ -44,7 +45,7 @@ export default class Home extends React.Component {
                             <div className="container-carousel">
                                 <h2 className="carousel-h2">Popular MyTineraries</h2>
                                 <div className="container-slider">
-                                    <Carousel/>
+                                    <ArraySlide/>
                                 </div>
                             </div>    
                         </div>

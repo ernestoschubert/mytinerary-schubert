@@ -8,91 +8,34 @@ import 'swiper/modules/pagination/pagination.scss';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
-const citiesFirstSlide = [
-  {
-    id: 1,
-    city: "Mykonos",
-    country: "Grecee",
-    src: require("../assets/mykonos.jpg").default,
-  },
-  {
-    id: 2,
-    city: "Cancun",
-    country: "Mexico",
-    src: require("../assets/cancun.jpeg").default,
-  },
-  {
-    id: 3,
-    city: "Pamukkale",
-    country: "Turkey",
-    src: require("../assets/pamukkale.jpg").default,
-  },
-  {
-    id: 4,
-    city: "Abu Dhabi",
-    country: "Arab Emirates",
-    src: require("../assets/abudhabi.jpg").default,
-  },
-];
-
-const citiesSecondSlide = [
-  {
-    id: 5,
-    city: "New York",
-    country: "United States",
-    src: require("../assets/newyork.jpg").default,
-  },
-  {
-    id: 6,
-    city: "Barcelona",
-    country: "Spain",    
-    src: require("../assets/barcelona.jpg").default,
-  },
-  {
-    id: 7,
-    city: "London",
-    country: "England",
-    src: require("../assets/london.jpg").default,
-  },
-  {
-    id: 8,
-    city: "Hong Kong",
-    country: "China",
-    src: require("../assets/hongkong.jpg").default,
-  },
-];
-
-const citiesThirdSlide = [
-  {
-    id: 9,
-    city: "Machu Picchu",
-    country: "Peru",
-    src: require("../assets/machupicchu.jpg").default,
-  },
-  {
-    id: 10,
-    city: "Isla de Pascua",
-    country: "Chile",
-    src: require("../assets/isladepascua.jpg").default,
-  },
-  {
-    id: 11,
-    city: "Cairo",
-    country: "Egypt",
-    src: require("../assets/cairopyramids.jpg").default,
-
-  },
-  {
-    id: 12,
-    city: "Rome",
-    country: "Italy",
-    src: require("../assets/coliseum.jpg").default,
-
-  },
-];
 
 
-const CarouselCities = () => {
+const CarouselCities = (props) => {
+  const citiesFirstSlide = props.citiesFirstSlide;
+  const citiesSecondSlide = props.citiesSecondSlide;
+  const citiesThirdSlide = props.citiesThirdSlide;
+
+  const firstSlide = citiesFirstSlide.map((data) => {
+    return (
+        <div className="city-img" key={data.id} style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
+          <h3>{data.city + " - " + data.country}</h3>  
+        </div>  
+    );
+  });
+  const secondSlide =citiesSecondSlide.map((data) => {
+    return (
+        <div className="city-img" key={data.id} style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
+          <h3>{data.city + " - " + data.country}</h3>  
+        </div>  
+    );
+  });
+  const thirdSlide = citiesThirdSlide.map((data) => {
+    return (
+        <div className="city-img" key={data.id} style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
+          <h3>{data.city + " - " + data.country}</h3>  
+        </div>  
+    );
+  });
 
   return (
       <div className="carousel-container">
@@ -106,41 +49,17 @@ const CarouselCities = () => {
           }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide className="slide city-cont">
-            {citiesFirstSlide.map((data) => {
-              return (
-                <div className="slider-content">
-                  <div className="city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
-                    <h3>{data.city + " - " + data.country}</h3>  
-                  </div>  
-                </div>
-              );
-            })}
+            {firstSlide}
           </SwiperSlide>
           <SwiperSlide className="slide city-cont">
-            {citiesSecondSlide.map((data) => {
-              return (
-                <div>
-                  <div className="city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
-                    <h3>{data.city + " - " + data.country}</h3>  
-                  </div>  
-                </div>
-              );
-            })}
+            {secondSlide}
           </SwiperSlide>
           <SwiperSlide className="slide city-cont">
-            {citiesThirdSlide.map((data) => {
-              return (
-                <div className="slider-content">
-                  <div className="city-img" style={{backgroundImage: `URL(${data.src})`, backgroundSize: 'cover'}} >
-                    <h3>{data.city + " - " + data.country}</h3>  
-                  </div>  
-                </div>
-              );
-            })}
+            {thirdSlide}
           </SwiperSlide>
         </Swiper>
       </div>
@@ -148,3 +67,87 @@ const CarouselCities = () => {
 };
 
 export default CarouselCities 
+
+
+  // const citiesFirstSlide = [
+  //   {
+  //     id: 1,
+  //     city: "Mykonos",
+  //     country: "Grecee",
+  //     src: require("../assets/mykonos.jpg").default,
+  //   },
+  //   {
+  //     id: 2,
+  //     city: "Cancun",
+  //     country: "Mexico",
+  //     src: require("../assets/cancun.jpeg").default,
+  //   },
+  //   {
+  //     id: 3,
+  //     city: "Pamukkale",
+  //     country: "Turkey",
+  //     src: require("../assets/pamukkale.jpg").default,
+  //   },
+  //   {
+  //     id: 4,
+  //     city: "Abu Dhabi",
+  //     country: "Arab Emirates",
+  //     src: require("../assets/abudhabi.jpg").default,
+  //   },
+  // ];
+  
+  // const citiesSecondSlide = [
+  //   {
+  //     id: 5,
+  //     city: "New York",
+  //     country: "United States",
+  //     src: require("../assets/newyork.jpg").default,
+  //   },
+  //   {
+  //     id: 6,
+  //     city: "Barcelona",
+  //     country: "Spain",    
+  //     src: require("../assets/barcelona.jpg").default,
+  //   },
+  //   {
+  //     id: 7,
+  //     city: "London",
+  //     country: "England",
+  //     src: require("../assets/london.jpg").default,
+  //   },
+  //   {
+  //     id: 8,
+  //     city: "Hong Kong",
+  //     country: "China",
+  //     src: require("../assets/hongkong.jpg").default,
+  //   },
+  // ];
+  
+  // const citiesThirdSlide = [
+  //   {
+  //     id: 9,
+  //     city: "Machu Picchu",
+  //     country: "Peru",
+  //     src: require("../assets/machupicchu.jpg").default,
+  //   },
+  //   {
+  //     id: 10,
+  //     city: "Isla de Pascua",
+  //     country: "Chile",
+  //     src: require("../assets/isladepascua.jpg").default,
+  //   },
+  //   {
+  //     id: 11,
+  //     city: "Cairo",
+  //     country: "Egypt",
+  //     src: require("../assets/cairopyramids.jpg").default,
+  
+  //   },
+  //   {
+  //     id: 12,
+  //     city: "Rome",
+  //     country: "Italy",
+  //     src: require("../assets/coliseum.jpg").default,
+  
+  //   },
+  // ];
