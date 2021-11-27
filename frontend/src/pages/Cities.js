@@ -1,15 +1,16 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+// import axios from 'axios'
+import Button from 'react-bootstrap/Button';
+import { Link, Outlet } from 'react-router-dom'
 
 export default class Cities extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            cities : {}
-        }
+    
+    state = {
+        cities: [],
+        citiesFiltred: []
     }
-
     componentDidMount() {
         fetch("http://localhost:4000/api/cities")
             .then(res => res.json())
@@ -17,75 +18,52 @@ export default class Cities extends React.Component {
                 this.setState({cities: data.response.cities})
             })
             .catch(err => console.error(err))
+            
+        // axios.post("http:/localhost:4000/api/cities", {name: "Ernesto",edad: 25, id: 39 })
+
     }
 
     render() {
-        // const arrCities = this.state.cities
-        // console.log(this.state.cities)
+        
 
-        // componentDidUpdate() {}
+        const {cities} = this.state
 
-        if(this.state.cities.length > 0){
-            const allCities = this.state.cities.map(city => {
-                            return  (
-                                <div key={city.id} style={{backgroundImage: `${city.src}`, width: "auto", height: "30vh", color:"white"}}>
-                                    <p>{city.city + " - " + city.country}</p>
-                                </div>
-                            )
-                        })
-                        return (
-                            <div className="container-home">
-                                <Header/>
-                                <main>
-                                    {allCities}
-                                </main>
-                                <Footer/>
-                            </div>
-                            )
-        }
+        // citiesFilter = () => {
+            
+        // }
 
         return (
-            <div className="container-home">
+            
+            <>
                 <Header/>
                 <main>
-                    {/* {this.allCities} */}
+                    <div className="cities-hero" style={{backgroundImage: `URL("./assets/worldmap.jpg")`, backgroundSize: 'cover'}}>
+                        <div className="hero-content-cities">
+                            <h1>MyTinerary Trips</h1>
+                            <input className="mt-5" type="search" placeholder="Search city"></input>
+                        </div>
+                    </div>
+                    <div className="container-fluid">
+                        <div className="row justify-content-center">
+                            <h2 className="cities-h2 mb-3">Cities</h2>
+                                {
+                                    cities.map(city => {
+                                        return (
+                                            <div className="cities-img col-10 col-lg-5 mb-3 me-2 ms-2" key={city.id} style={{backgroundImage: `URL(${city.src})`, backgroundSize: 'cover'}} >
+                                                <Link to={`/city/${city.id}`} className="w-100 mb-2">
+                                                    <h3 className="w-100">{city.city + " - " + city.country}</h3>
+                                                    <Button variant="warning">More Info</Button>
+                                                </Link> 
+                                            </div> 
+                                        )
+                                    })
+                                }
+                                <Outlet />
+                        </div>
+                    </div>
                 </main>
                 <Footer/>
-            </div>
+            </>
         )
     }
 }
-
-
-// const Cities = () => {
-
-//     const [cities, setCities] = useState([])
-
-// useEffect(()=> {
-//     fetch("http://localhost:4000/api/cities")
-//             .then(res => res.json())
-//             .then(data => setCities(data.response.cities))
-//             .catch()
-//         },[]);
-        
-
-//     return (
-//         <div className="container-home">
-//             <Header/>
-//             <main>
-//                 {
-//                     cities.map(city => {
-//                     return  (
-//                         <div key={city.id} style={{backgroundImage: `${city.src}`, width: "auto", height: "30vh", color:"white"}}>
-//                             <p>{city.city + " - " + city.country}</p>
-//                         </div>
-//                         )
-//                     })
-//                 }
-//             </main>
-//             <Footer/>
-//         </div>
-//     )
-// }
-
-// export default Cities;

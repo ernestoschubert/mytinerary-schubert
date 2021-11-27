@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Home from './pages/Home.js';
 import Cities from './pages/Cities.js';
+import City from './pages/City';
+import Error404 from './pages/Error404';
+
 import {
   BrowserRouter,
   Routes,
@@ -15,6 +18,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="cities" element={<Cities />} />
+          <Route path="/" element={<City />} />
+        <Route path="error404" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
 )};
