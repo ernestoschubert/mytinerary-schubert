@@ -1,8 +1,15 @@
 const Router = require('express').Router();
+
 const citiesControllers = require('../controllers/citiesControllers');
+const { getCities, postCity, getCity  } = citiesControllers;
 
 Router.route('/cities')
-.get(citiesControllers.getCities)
-.post(citiesControllers.postCity)
+.get(getCities)
+.post(postCity)
+
+Router.route('/cities/:id')
+.get(getCity)
+
+
 
 module.exports = Router;

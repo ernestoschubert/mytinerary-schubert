@@ -89,15 +89,19 @@ const cities = [
         country: "France",
         src: "./assets/paris.jpg"
     }
-]
+];
 
 const citiesControllers = {
     getCities: (req, res) => {
-        res.json({response: {cities}})
+        res.json({response: {cities}});
     },
     postCity: (req, res) => {
         cities.push(req.body)
-        res.json({response: {cities}})
+        res.json({response: {cities}});
+    },
+    getCity: (req, res) => {
+        const city = cities.find(city => city.id.toString() === req.params.id);
+        res.json({response:city})
     }
 }
 
