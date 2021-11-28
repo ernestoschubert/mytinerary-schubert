@@ -15,11 +15,9 @@ export default class Cities extends React.Component {
         fetch("http://localhost:4000/api/cities")
             .then(res => res.json())
             .then(data => {
-                this.setState({cities: data.response.cities})
+                this.setState({cities: data.response})
             })
             .catch(err => console.error(err))
-            
-        // axios.post("http:/localhost:4000/api/cities", {name: "Ernesto",edad: 25, id: 39 })
 
     }
 
@@ -49,10 +47,10 @@ export default class Cities extends React.Component {
                                 {
                                     cities.map(city => {
                                         return (
-                                            <div className="cities-img col-10 col-lg-5 mb-3 me-2 ms-2" key={city.id} style={{backgroundImage: `URL(${city.src})`, backgroundSize: 'cover'}} >
-                                                <Link to={`/city/${city.id}`} className="w-100 mb-2">
+                                            <div className="cities-img col-10 col-lg-5 mb-3 me-2 ms-2" key={city._id} style={{backgroundImage: `URL(${city.src})`, backgroundSize: 'cover'}} >
+                                                <Link to={`/city/${city._id}`} className="w-100 mb-2">
                                                     <h3 className="w-100">{city.city + " - " + city.country}</h3>
-                                                    <Button variant="warning">More Info</Button>
+                                                    <Button variant="warning" className="more-info">More Info</Button>
                                                 </Link> 
                                             </div> 
                                         )

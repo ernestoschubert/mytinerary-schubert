@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 
 const citiesControllers = require('../controllers/citiesControllers');
-const { getCities, postCity, getCity  } = citiesControllers;
+const { getCities, postCity, getCity, deleteCity, putCity  } = citiesControllers;
 
 Router.route('/cities')
 .get(getCities)
@@ -9,6 +9,8 @@ Router.route('/cities')
 
 Router.route('/cities/:id')
 .get(getCity)
+.delete(deleteCity)
+.put(putCity)
 
 
 

@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const Router = require('./routes/routes')
 const app = express();
+require('./config/database')
 
 app.use(cors());
 app.use(express.json());

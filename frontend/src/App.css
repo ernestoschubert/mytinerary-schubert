@@ -490,7 +490,7 @@ a {
 .hero-content-cities {
         /* position: relative; */
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         /* top: 50%; */
         align-items: center;
         flex-direction: column;
@@ -507,7 +507,7 @@ a {
 
 .cities-img {
     /* width: 75vw; */
-    height: 50vh;
+    height: 40vh;
     border-radius: 0.5rem;
     background-position: center;
     -webkit-border-radius: 0.5rem;
@@ -538,6 +538,14 @@ a {
 .cities-h2 {
     color: #ffffff;
 }
+.more-info {
+    padding: .2rem 2rem;
+}
+.more-info:hover {
+    color: #fff2f2;
+    transition: ease all .5s;
+    transform: scale(1.02);
+}
 
 /* CITY */
 
@@ -546,6 +554,8 @@ a {
     color: #ffffff;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-position: center;
     max-width: 100%;
     width: 100%;
@@ -556,3 +566,11 @@ a {
     color: #ffffff;
 }
 
+.hero-city p{
+    color: #ffffff;
+}
+
+.itinerary-div {
+    color: #ffffff;
+    font-size: 1.4rem;
+}
