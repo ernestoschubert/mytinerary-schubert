@@ -466,6 +466,9 @@ footer a {
 }
 
 /* CITIES */
+.spinner {
+    width: 10rem;
+}
 a {
     text-decoration: none;
 }

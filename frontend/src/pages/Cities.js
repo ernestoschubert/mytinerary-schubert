@@ -3,7 +3,8 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 // import axios from 'axios'
 import Button from 'react-bootstrap/Button';
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Loader from '../components/Loader';
 
 export default class Cities extends React.Component {
     
@@ -20,15 +21,31 @@ export default class Cities extends React.Component {
             .catch(err => console.error(err))
 
     }
-
+    searchHandler = (e) => {
+            const searchValue = e.target.value.toLowerCase();
+            console.log(searchValue)
+            let filtred = [];
+            if(searchValue !== '') {
+                filtred = this.state.cities.filter(place => {
+                    const city = place.city.toLowerCase()
+                    return city.startsWith(searchValue)
+                }) 
+            } else {
+                filtred = this.state.cities
+            }
+            this.setState({citiesFiltred: filtred})
+            console.log(this.state.citiesFiltred)
+            // console.log(this.state.cities)
+        }
     render() {
-        
 
         const {cities} = this.state
+        const {citiesFiltred} = this.state
 
-        // citiesFilter = () => {
-            
-        // }
+        // si citiesfliltred.length === 0 ? citiesfiltred.map : cities
+       //  si citiesfiltred distinto de 0 {render cities}
+//          si citiesfiltred  igual a 0 y cities igual a 0 {render loader}
+//          if else citiesfiltred igual a 0 y cities distinto de 0 {render cities}
 
         return (
             
@@ -38,25 +55,27 @@ export default class Cities extends React.Component {
                     <div className="cities-hero" style={{backgroundImage: `URL("./assets/worldmap.jpg")`, backgroundSize: 'cover'}}>
                         <div className="hero-content-cities">
                             <h1>MyTinerary Trips</h1>
-                            <input className="mt-5" type="search" placeholder="Search city"></input>
+                            <input className="mt-5" type="search" placeholder="Search city" onChange={this.searchHandler}></input>
                         </div>
                     </div>
-                    <div className="container-fluid">
-                        <div className="row justify-content-center">
+                    <div className="container-fluid container-cities">
+                        <div className="row justify-content-center m-0">
                             <h2 className="cities-h2 mb-3">Cities</h2>
-                                {
-                                    cities.map(city => {
+                                {   
+                                    cities.length === 0 ? <Loader /> 
+                                    :
+                                    (citiesFiltred.length > 0 ? citiesFiltred : cities).map(citi => {
+                                        const {_id, city, country, src} = citi
                                         return (
-                                            <div className="cities-img col-10 col-lg-5 mb-3 me-2 ms-2" key={city._id} style={{backgroundImage: `URL(${city.src})`, backgroundSize: 'cover'}} >
-                                                <Link to={`/city/${city._id}`} className="w-100 mb-2">
-                                                    <h3 className="w-100">{city.city + " - " + city.country}</h3>
+                                            <div className="cities-img col-10 col-lg-5 mb-4 me-2 ms-2" key={_id} style={{backgroundImage: `URL(${src})`, backgroundSize: 'cover'}} >
+                                                <Link to={`/city/${_id}`} className="w-100 mb-2">
+                                                    <h3 className="w-100">{city + " - " + country}</h3>
                                                     <Button variant="warning" className="more-info">More Info</Button>
                                                 </Link> 
                                             </div> 
                                         )
                                     })
                                 }
-                                <Outlet />
                         </div>
                     </div>
                 </main>

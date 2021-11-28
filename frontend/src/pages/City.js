@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 export default class City extends React.Component {
     constructor(props) {
@@ -34,14 +35,15 @@ export default class City extends React.Component {
             <main className="d-flex justify-content-center align-center">
                 <div className="hero-city" key={_id}  style={{backgroundImage: `URL(${src})`, backgroundSize: 'cover'}}>
 
-                    <h1>{city}</h1>
+                
+                    <h1>{city === undefined ? <Loader /> : city}</h1>
 
                     <p>{country}</p>
 
 
                 </div>
                 <div className="itinerary-div">
-                    <p>{description}</p>
+                    <p>{description === undefined ? <Loader size="sm"/> : description}</p>
                     <br/>
                     <p>Section Under Construction</p>
                     <br/>
