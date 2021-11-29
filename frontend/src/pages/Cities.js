@@ -33,6 +33,7 @@ export default class Cities extends React.Component {
             console.log(this.state.citiesFiltred)
             // console.log(this.state.cities)
         }
+        
     render() {
 
         const {cities, citiesFiltred} = this.state
@@ -57,7 +58,7 @@ export default class Cities extends React.Component {
                                     citiesFiltred.length > 0 
                                     ?
                                     citiesFiltred.map(citi => {
-                                        const {_id, city, country, src} = citi
+                                        const { _id, city, country, src } = citi
                                         return (
                                             <div className="cities-img col-10 col-lg-5 mb-4 me-2 ms-2" key={_id} style={{backgroundImage: `URL(${src})`, backgroundSize: 'cover'}} >
                                                 <Link to={`/city/${_id}`} className="w-100 mb-2">
