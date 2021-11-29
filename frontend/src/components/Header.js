@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
 
-    const logo = "./assets/mytinerary_logo.png";
+    const logo = "/assets/mytinerary_logo.png";
     // const userIcon = "./assets/account_circle_white_36dp.svg";
 
     return (

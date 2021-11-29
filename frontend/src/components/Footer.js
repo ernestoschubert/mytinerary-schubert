@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     
     const [logo, ig, fb, tw] = [
-        "./assets/mytinerary_logo.png",
-        "./assets/instagram.png",
-        "./assets/facebook.png",
-        "./assets/twitter.png",
+        "/assets/mytinerary_logo.png",
+        "/assets/instagram.png",
+        "/assets/facebook.png",
+        "/assets/twitter.png",
     ];
 
     return (

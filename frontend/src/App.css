@@ -549,11 +549,18 @@ a {
     transition: ease all .5s;
     transform: scale(1.02);
 }
-
+.not-found {
+    margin: 10vh auto;
+    background-color: rgba(255, 0, 0, 0.199);
+    border-radius: .4rem;
+    width: 20rem;
+    padding: .4rem;
+    color: #ffffff;
+}
 /* CITY */
 
 .hero-city {
-    height: 70vh;
+    height: 60vh;
     color: #ffffff;
     display: flex;
     justify-content: center;
@@ -568,12 +575,27 @@ a {
 .hero-city h1{
     color: #ffffff;
 }
+.place-cont {
+    background-color: #0000007c;
+    border-radius: .2rem;
+    padding: .2rem 1rem;
+}
 
 .hero-city p{
     color: #ffffff;
 }
 
 .itinerary-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: #ffffff;
     font-size: 1.4rem;
+}
+
+.underconst {
+    background-color: rgba(255, 0, 0, 0.158);
+    border-radius: .5rem;
+    padding: .2rem 2rem;
+    margin-top: 3rem;
 }
