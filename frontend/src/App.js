@@ -6,7 +6,7 @@ import Cities from './pages/Cities.js';
 import CityWithoutProps from './pages/City';
 import Error404 from './pages/Error404';
 import { withRouter} from './utils/withRouter'
-
+import ScrollToTop from './components/ScrollToTop';
 import {
   BrowserRouter,
   Routes,
@@ -18,6 +18,7 @@ const City = withRouter(CityWithoutProps)
 const App = () => {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="cities" element={<Cities />} />

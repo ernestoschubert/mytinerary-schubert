@@ -1,6 +1,6 @@
 const Error404 = () => {
     return (
-        <p>Error 404</p>
+        <h2 className="d-flex justify-content-center align-items-center">Error 404</h2>
     )
 }
 

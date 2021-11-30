@@ -9,13 +9,13 @@ export default class Cities extends React.Component {
     
     state = {
         cities: [],
-        citiesFiltred: []
+        citiesFiltered: []
     }
     componentDidMount() {
         fetch("http://localhost:4000/api/cities")
             .then(res => res.json())
             .then(data => {
-                this.setState({cities: data.response, citiesFiltred: data.response})
+                this.setState({cities: data.response, citiesFiltered: data.response})
             })
             .catch(err => console.error(err))
 
@@ -24,19 +24,19 @@ export default class Cities extends React.Component {
 
             const searchValue = e.target.value.toLowerCase().trim();
             console.log(searchValue)
-            let filtred = [];
-            filtred = this.state.cities.filter(place => {
+            let filtered = [];
+            filtered = this.state.cities.filter(place => {
                 const city = place.city.toLowerCase().trim()
                 return city.startsWith(searchValue)
             }) 
-            this.setState({citiesFiltred: filtred})
-            console.log(this.state.citiesFiltred)
+            this.setState({citiesFiltered: filtered})
+            console.log(this.state.citiesFiltered)
             // console.log(this.state.cities)
         }
         
     render() {
 
-        const {cities, citiesFiltred} = this.state
+        const {cities, citiesFiltered} = this.state
 
         return (
             <>
@@ -55,9 +55,9 @@ export default class Cities extends React.Component {
                                 {   
                                     cities.length === 0 ? <Loader /> 
                                     : 
-                                    citiesFiltred.length > 0 
+                                    citiesFiltered.length > 0 
                                     ?
-                                    citiesFiltred.map(citi => {
+                                    citiesFiltered.map(citi => {
                                         const { _id, city, country, src } = citi
                                         return (
                                             <div className="cities-img col-10 col-lg-5 mb-4 me-2 ms-2" key={_id} style={{backgroundImage: `URL(${src})`, backgroundSize: 'cover'}} >
