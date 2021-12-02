@@ -12,14 +12,6 @@ const citiesControllers = {
         new City({city, country, src, description}).save()
         .then(() => res.json({success: true}))
         .catch(err => console.log(err))
-        // const addCity = new City({
-        //     city: req.body.city,
-        //     country: req.body.country,
-        //     src: req.body.src,
-        //     description: req.body.description
-        // })
-        // addCity.save()
-        // .then(() => res.json({ success: true }))
     },
     getCity: (req, res) => {
         City.findOne({_id: req.params.id})
