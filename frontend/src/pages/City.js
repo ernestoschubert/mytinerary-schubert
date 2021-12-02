@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Loader from '../components/Loader';
+import Itinerary from '../components/Itineraries';
 
 export default class City extends React.Component {
     constructor(props) {
@@ -42,7 +43,7 @@ export default class City extends React.Component {
                     {/* <p>{description === undefined ? <Loader size="sm"/> : description}</p> */}
                     <p className="underconst">Under Construction </p>
                     <img src="/assets/underconstruction.png" width="200" className="mb-4" alt="under construction"/>
-
+                    <Itinerary />
                     <Link to="/cities" className="mb-4"><Button variant="warning">Go back Cities</Button></Link>
                 </div>
             </main>

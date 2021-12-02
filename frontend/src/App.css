@@ -237,47 +237,6 @@ main {
     transform: scale(1.05);
     box-shadow: 1px 1px 5px #8f8f8fc7;
 }
-/* .container-carousel {
-    max-width: 100%;
-    width: 80%;
-    background-color: #0000006b;
-    border-radius: 1rem;
-
-    margin: 1rem auto 3rem auto;
-}
-
-.container-slider {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
-    border-radius: 1rem;
-    margin-bottom: 3rem; 
-}
-.container-slider img {
-    border-radius: 1rem;
-    margin-bottom: .5rem;
-    width: 30vw;
-    height: 30vh;
-    box-shadow: 1px 1px 10px rgba(68, 68, 68, 0.795);
-}
-.carousel-h2 {
-    color: #ffffff;
-    text-shadow: 0 0 5px rgba(128, 128, 128, 0.815), 0 0 3px #000000;
-    border-radius: 1rem;
-    width: auto;
-    padding: .5rem 2rem;
-}
-.carousel-control-prev {
-    justify-content: flex-start;
-}
-.carousel-control-next {
-    justify-content: flex-end;
-}
-.city-img {
-    width: 40vw;
-    height: 40vh;
-} */
 
 .plane img{
     position: relative;
@@ -293,7 +252,6 @@ main {
     }
 }
 
-/* trasnform translate 50% */
 /* CAROUSEL SWIPER */
 
 .carousel-container {
@@ -598,4 +556,43 @@ a {
     border-radius: .5rem;
     padding: .2rem 2rem;
     margin-top: 3rem;
+}
+
+/* ITINERARY */
+
+.itineraries-container {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    background-color: #fdfdfd;
+    color: #000000;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.publisher {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.publisher img {
+    width: 8rem;
+    border-radius: 50%;
+}
+
+.cont-likes-publisher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cont-info-it {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.it-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

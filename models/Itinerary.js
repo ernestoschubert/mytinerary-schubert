@@ -5,7 +5,10 @@ const itinerarySchema = new mongoose.Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
     price: {type: Number, required: true},
-    duration: {type: String, required: true}
+    duration: {type: Number, required: true},
+    likes: {type: Array},
+    hastags: {type: Array},
+    city:  {type:[{type: mongoose.Types.ObjectId, ref: 'city', required: true}], required: true}
 });
 
 const Itinerary = mongoose.model('itinerary', itinerarySchema);

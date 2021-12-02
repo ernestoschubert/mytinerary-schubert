@@ -2,24 +2,18 @@ const Itinerary = require('../models/Itinerary');
 
 const itineraryControllers = {
     getItineraries: (req, res) => {
-        Itinerary.find()
+        Itinerary.find().populate('city')
         .then((itineraries) => res.json({ response: itineraries }))
         .catch(err => console.log(err))
     },
     postItinerary: (req, res) => {
-        const addItinerary = new Itinerary({
-            src: req.body.src,
-            activity: req.body.activity,
-            duration: req.body.duration,
-            price: req.body.price
-        })
-        addItinerary.save()
-        .then(() => res.json({ success: true }))
+        const {src,firstName, lastName, price, duration, likes, hastags, city} = req.body 
+        new Itinerary({src,firstName, lastName, price, duration, likes, hastags, city}).save()
+        .then(() => res.json({success: true}))
         .catch(err => console.log(err))
-        
     },
     getItinerary: (req, res) => {
-        Itinerary.findOne({_id: req.params.id})
+        Itinerary.findOne({_id: req.params.id}).populate('city')
         .then((itinerary) => res.json({response:itinerary}))
     },
     deleteItinerary: (req, res) => {
