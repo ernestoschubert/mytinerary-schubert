@@ -1,54 +1,53 @@
 import React from 'react';
-import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Loader from '../components/Loader';
 import Itinerary from '../components/Itineraries';
+import { connect } from 'react-redux';
+import citiesActions from '../redux/actions/citiesActions';
+import itinerariesActions from '../redux/actions/itinerariesActions'
 
-export default class City extends React.Component {
-    constructor(props) {
-        super(props)
-        console.log(props)
-    }
-    
-    state = {
-        place : {}
-    }
+class City extends React.Component {    
     
     id = this.props.params.id
 
     componentDidMount() {
-        axios.get('http://localhost:4000/api/cities/'+this.id)
-        .then(res => this.setState({place: res.data.response}))
+        this.props.getCity(this.id)
     }
     
     render() {
-        const citySelect = this.state.place;
-        console.log(citySelect)
-        const {_id, city, country, src} = citySelect
 
         return (   
          <>
             <Header />
             <main className="d-flex justify-content-center align-center">
-                <div className="hero-city" key={_id}  style={{backgroundImage: `URL(${src})`, backgroundSize: 'cover'}}>
+                <div className="hero-city" key={this.props.city._id} style={{backgroundImage: `URL(${this.props.city.src})`, backgroundSize: 'cover'}}>
                     <div className="place-cont">
-                        <h1>{city === undefined ? <Loader /> : city}</h1>
-                        <p>{country}</p>
+                        <h1>{ this.props.city.city === undefined ? <Loader /> : this.props.city.city }</h1>
+                        <p>{ this.props.city.country }</p>
                     </div>
                 </div>
-                <div className="itinerary-div">
-                    {/* <p>{description === undefined ? <Loader size="sm"/> : description}</p> */}
-                    <p className="underconst">Under Construction </p>
-                    <img src="/assets/underconstruction.png" width="200" className="mb-4" alt="under construction"/>
-                    <Itinerary />
-                    <Link to="/cities" className="mb-4"><Button variant="warning">Go back Cities</Button></Link>
-                </div>
+                <Itinerary />
+
+                <Link to="/cities" className="mb-4 mt-4"><Button variant="warning">Go back Cities</Button></Link>
             </main>
             <Footer />
          </>           
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        city: state.cities.city,
+        itinerary: state.itineraries.itinerary
+    }
+}
+
+const mapDispatchToProps = {
+    getCity: citiesActions.getCity,
+    getItinerary: itinerariesActions.getItinerary
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(City);

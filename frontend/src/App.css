@@ -16,7 +16,6 @@ body {
 @media (min-width: 600px) {
     .next-section {
         display: flex;
-        /* background-color: rgba(0, 0, 0, 0.788); */
         border-radius: .8rem;
         padding: .4rem .2rem 0 .2rem;
         align-items: flex-end;
@@ -133,7 +132,6 @@ main {
 }
 
 .main-fv {
-    background-image: url("./assets/city_sunset.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -193,7 +191,6 @@ main {
 }
 
 .main-sv {
-    background-image: url("./assets/shanghai_sunset.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -216,7 +213,6 @@ main {
     align-items: center;
     min-width: 50%;
     justify-content: center;
-    background-image: url(./assets/worldmap.jpg);
     background-position: center;
     background-repeat: no-repeat;
     color: #ffffff;
@@ -430,6 +426,12 @@ footer a {
 a {
     text-decoration: none;
 }
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
 .cities-hero {
     height: 70vh;
     color: #ffffff;
@@ -449,10 +451,8 @@ a {
     border-radius: .6rem;
 }
 .hero-content-cities {
-        /* position: relative; */
         display: flex;
         justify-content: flex-end;
-        /* top: 50%; */
         align-items: center;
         flex-direction: column;
         margin-bottom: 2rem;
@@ -467,7 +467,6 @@ a {
 }
 
 .cities-img {
-    /* width: 75vw; */
     height: 40vh;
     border-radius: 0.5rem;
     background-position: center;
@@ -566,7 +565,7 @@ a {
     width: 60vw;
     background-color: #fdfdfd;
     color: #000000;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
     border-radius: .5rem;
 }
 

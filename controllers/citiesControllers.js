@@ -16,14 +16,17 @@ const citiesControllers = {
     getCity: (req, res) => {
         City.findOne({_id: req.params.id})
         .then((city) => res.json({response:city}))
+        .catch(err => console.error(err))
     },
     deleteCity: (req, res) => {
         City.findOneAndDelete({_id: req.params.id})
         .then(() => res.json({ success: true}))
+        .catch(err => console.error(err))
     },
     putCity: (req, res) => {
         City.findOneAndUpdate({_id: req.params.id}, {...req.body})
         .then(()=> res.json({success: true}))
+        .catch(err => console.error(err))
     } 
 }
 

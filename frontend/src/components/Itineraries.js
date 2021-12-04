@@ -1,14 +1,9 @@
-// import React, { useState, useEffect } from 'react'
-// import useParams from 'react-router-dom'
-// import axios from 'axios';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
+const Itinerary = (props) => {
 
-const Itinerary = () => {
-    // const id = useParams(id)
-    // useEffect(() => {
-    //     axios.get('http://localhost:4000/api/itineraries')
-    //     .then(res => console.log(res))
-    // }, [])
 
     return (
         <div className="itineraries-container">
@@ -29,6 +24,18 @@ const Itinerary = () => {
                 <p>hastags</p>
                 </div>
             </div>
+            <Accordion defaultActiveKey="0" className="mt-4">
+                <Accordion.Item eventKey="0">
+                    <Accordion.Header>Activities</Accordion.Header>
+                        <Accordion.Body>
+                            <div className="itinerary-div">
+                        {/* <p>{description === undefined ? <Loader size="sm"/> : description}</p> */}
+                                <p className="underconst"> Under Construction </p>
+                                <img src="/assets/underconstruction.png" width="200" className="mb-4" alt="under construction"/>
+                            </div>
+                        </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
         </div>
     )
 }

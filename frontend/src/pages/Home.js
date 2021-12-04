@@ -21,7 +21,7 @@ export default class Home extends React.Component {
                 <div className="container-home">
                     <Header/>
                     <main>
-                        <div className="main-fv">
+                        <div className="main-fv" style={{backgroundImage: 'URL("/assets/city_sunset.jpg")'}}>
                             <div className="hero-container">
                                 <img src={logo} width="100"  alt="MyTinerary Logo"/>
                                 <h1 className="hero-h1">Welcome to <span className="my">My</span><span className="tine">Tine</span><span className="rary">rary</span></h1>
@@ -36,8 +36,8 @@ export default class Home extends React.Component {
                                 <img src={plane} alt="Plane img"/>
                             </div>
                         </div>
-                        <div id="sv" className="main-sv">
-                            <div className="call-to-action">
+                        <div id="sv" className="main-sv" style={{backgroundImage: 'url("/assets/shanghai_sunset.jpg")'}}>
+                            <div className="call-to-action" style={{backgroundImage: 'url(/assets/worldmap.jpg)'}}>
                                 <p className="cta-text">Choose your dreams trip!<br/> Discover all our trips </p>                             
                                 <Link className="link" to="/cities"><Button variant="warning" className="fs-5 p-2 ps-4 pe-4 mt-2 btn-cta">Here</Button></Link>
                             </div>

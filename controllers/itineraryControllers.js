@@ -23,7 +23,11 @@ const itineraryControllers = {
     putItinerary: (req, res) => {
         Itinerary.findOneAndUpdate({_id: req.params.id}, {...req.body})
         .then(()=> res.json({success: true}))
-    } 
+    }, 
+    getCityItineraries: (req, res) => {
+        Itinerary.find({city: req.params.id}).populate('city')
+        .then(itineraries => res.json({itineraries}))
+    }
 }
 
 module.exports = itineraryControllers;
