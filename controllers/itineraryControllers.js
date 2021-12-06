@@ -7,8 +7,8 @@ const itineraryControllers = {
         .catch(err => console.log(err))
     },
     postItinerary: (req, res) => {
-        const {src,firstName, lastName, price, duration, likes, hastags, city} = req.body 
-        new Itinerary({src,firstName, lastName, price, duration, likes, hastags, city}).save()
+        const {src,firstName, lastName, price, duration, likes, hastags, city, title, comments} = req.body 
+        new Itinerary({src,firstName, lastName, price, duration, likes, hastags, city, title, comments}).save()
         .then(() => res.json({success: true}))
         .catch(err => console.log(err))
     },

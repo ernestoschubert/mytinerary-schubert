@@ -43,8 +43,9 @@ class City extends React.Component {
                         )
                     })
                     :
-                    <div className="no-itine p-1">
+                    <div className="no-itine">
                         <h4>There are no itineraries yet for {city.city}</h4>
+                        <img src="/assets/comingsoon.png" alt ="coming soon"/>
                     </div>
                 }
 
