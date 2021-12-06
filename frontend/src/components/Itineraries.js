@@ -18,11 +18,11 @@ const Itineraries = (props) => {
                     <h2 className="mb-5 mt-2 italic-shadow">{props.itinerary.title}</h2>
                 </div>
                 <div className="it-info">
-                <p className="italic-shadow">Price: {("💸").repeat(props.itinerary.price)}</p>
-                <p className="italic-shadow">Duration: {("⏱️").repeat(props.itinerary.duration)}</p>
-                <p className="italic-shadow">Hastags: {props.itinerary.hastags.map(hastag => {
-                    return <a href={`/city/${props.itinerary.city}`} className="ms-2">{hastag}</a>
-                })}</p>
+                    <p className="italic-shadow">Price: {("💸").repeat(props.itinerary.price)}</p>
+                    <p className="italic-shadow">Duration: {("⏱️").repeat(props.itinerary.duration)}</p>
+                    <p className="italic-shadow">Hastags: {props.itinerary.hastags.map(hastag => {
+                        return <a href={`/city/${props.itinerary.city}`} className="ms-2">{hastag}</a>
+                    })}</p>
                 </div>
             </div>
             <Accordion defaultActiveKey="0" className="mt-4">
