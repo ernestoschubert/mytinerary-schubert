@@ -9,7 +9,7 @@ const citiesActions = {
         }
     },
     getFiltered: (cities ,e) => {
-        return async (dispatch, getState) => {
+        return (dispatch, getState) => {
             dispatch({type: 'GET_CITIES_FILTERED', payload:{ cities, e }})
             console.log(e)
             console.log(cities)

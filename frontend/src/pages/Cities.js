@@ -7,7 +7,6 @@ import Loader from '../components/Loader';
 import { connect } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
 
-
 class Cities extends React.Component {
     
     componentDidMount() {

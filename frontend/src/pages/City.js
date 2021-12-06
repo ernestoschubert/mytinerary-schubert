@@ -4,32 +4,49 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Loader from '../components/Loader';
-import Itinerary from '../components/Itineraries';
+import Itineraries from '../components/Itineraries';
 import { connect } from 'react-redux';
 import citiesActions from '../redux/actions/citiesActions';
-import itinerariesActions from '../redux/actions/itinerariesActions'
+import itinerariesActions from '../redux/actions/itinerariesActions';
 
 class City extends React.Component {    
-    
+
     id = this.props.params.id
 
     componentDidMount() {
-        this.props.getCity(this.id)
+        this.props.getCities();
+        this.props.getCity(this.id);
+        this.props.getCityItineraries(this.id);
     }
-    
+
     render() {
 
+        const { cities, itinerary, city } = this.props
+        
         return (   
          <>
             <Header />
             <main className="d-flex justify-content-center align-center">
-                <div className="hero-city" key={this.props.city._id} style={{backgroundImage: `URL(${this.props.city.src})`, backgroundSize: 'cover'}}>
+                <div className="hero-city" key={city._id} style={{backgroundImage: `URL(${city.src})`, backgroundSize: 'cover'}}>
                     <div className="place-cont">
-                        <h1>{ this.props.city.city === undefined ? <Loader /> : this.props.city.city }</h1>
-                        <p>{ this.props.city.country }</p>
+                        <h1>{ city.city === undefined ? <Loader /> : city.city }</h1>
+                        <p>{ city.country }</p>
                     </div>
                 </div>
-                <Itinerary />
+                <h2 className="itine-h2 italic-shadow mb-3">Itineraries</h2>
+
+                {   cities.length === 0 ? <Loader /> :
+                    itinerary.length > 0 ?
+                    itinerary.map((itine, index) => {
+                        return (
+                            <Itineraries itinerary={itine} key={index}/>
+                        )
+                    })
+                    :
+                    <div className="no-itine p-1">
+                        <h4>There are no itineraries yet for {city.city}</h4>
+                    </div>
+                }
 
                 <Link to="/cities" className="mb-4 mt-4"><Button variant="warning">Go back Cities</Button></Link>
             </main>
@@ -40,14 +57,16 @@ class City extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
+        cities: state.cities.citiesArray,
         city: state.cities.city,
         itinerary: state.itineraries.itinerary
     }
 }
 
 const mapDispatchToProps = {
+    getCities: citiesActions.getCities,
     getCity: citiesActions.getCity,
-    getItinerary: itinerariesActions.getItinerary
+    getCityItineraries: itinerariesActions.getCityItineraries
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

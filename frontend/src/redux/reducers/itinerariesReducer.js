@@ -1,9 +1,9 @@
-const itinerariesReducer = (state = {itinerary: {}}, action) => {
+const itinerariesReducer = (state = {itinerary: []}, action) => {
 
-    if(action.type === "GET_ITINERARY") {
+    if(action.type === "GET_CITY_ITINERARY") {
         return {
             ...state,
-            itinerary: action.payloud
+            itinerary: action.payload
         }
     }
     else {

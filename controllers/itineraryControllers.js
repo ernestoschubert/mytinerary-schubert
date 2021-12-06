@@ -26,7 +26,7 @@ const itineraryControllers = {
     }, 
     getCityItineraries: (req, res) => {
         Itinerary.find({city: req.params.id}).populate('city')
-        .then(itineraries => res.json({itineraries}))
+        .then(itineraries => res.json({response:itineraries}))
     }
 }
 

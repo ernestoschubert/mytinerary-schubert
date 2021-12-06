@@ -533,8 +533,8 @@ a {
     color: #ffffff;
 }
 .place-cont {
-    background-color: #0000007c;
-    border-radius: .2rem;
+    background-color: #00000094;
+    border-radius: .5rem;
     padding: .2rem 1rem;
 }
 
@@ -558,14 +558,18 @@ a {
 }
 
 /* ITINERARY */
-
+.itine-h2 {
+    color: #ffffff;
+    text-transform: uppercase;
+}
 .itineraries-container {
     display: flex;
     flex-direction: column;
-    width: 60vw;
+    box-shadow: 0 0 3px gray;
+    width: 85vw;
     background-color: #fdfdfd;
-    color: #000000;
-    padding: 2rem 2rem 0 2rem;
+    color: #505050;
+    padding: 2rem 1rem .4rem 1rem;
     border-radius: .5rem;
 }
 
@@ -574,11 +578,23 @@ a {
     flex-direction: row;
     align-items: center;
 }
-.publisher img {
-    width: 8rem;
-    border-radius: 50%;
-}
 
+.img-bg {
+    width: 6.2rem;
+    height: 6.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40%;
+    background-color: #e4e4e4;
+    box-shadow: 0 0 .15rem #000000c7;
+}
+.img-bg img{
+    background-position: center;
+    background-size: cover;
+    width: 6rem;
+    border-radius: 40%;
+}
 .cont-likes-publisher {
     display: flex;
     flex-direction: row;
@@ -590,8 +606,35 @@ a {
     flex-direction: column;
     justify-content: center;
 }
+
 .it-info {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+}
+
+@media (min-width: 1200px) {
+    .it-info {
+        flex-direction: row;
+    }
+    .itineraries-container{
+        width: 80vw;
+    }
+}
+@media (min-width: 1400px) {
+    .itineraries-container{
+        width: 60vw;
+    }
+}
+.italic-shadow {
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(80, 80, 80, 0.925);
+}
+
+.no-itine {
+    background-color: honeydew;
+}
+
+.linkedin-logo img{
+    width: 20px;
 }
