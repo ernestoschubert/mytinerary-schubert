@@ -1,4 +1,5 @@
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Link } from 'react-router-dom';
 
 function Dropdown() {
     // const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
@@ -9,8 +10,8 @@ function Dropdown() {
     }
     return (
         <NavDropdown title={imgUser.img} id="nav-dropdown" menuVariant="dark">
-          <NavDropdown.Item eventKey="1">Log in</NavDropdown.Item>
-          <NavDropdown.Item eventKey="2">Sign Up</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/login" eventKey="1">Log in</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/signup" eventKey="2">Sign Up</NavDropdown.Item>
         </NavDropdown>
     );
   }

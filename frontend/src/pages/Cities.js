@@ -39,12 +39,12 @@ class Cities extends React.Component {
                                     citiesFiltered.map(item => {
                                         const { _id, city, country, src } = item
                                         return (
-                                            <div className="cities-img col-10 col-lg-5 mb-4 me-2 ms-2" key={_id} style={{backgroundImage: `URL(${src})`, backgroundSize: 'cover'}} >
-                                                <Link to={`/city/${_id}`} className="w-100 mb-2">
+                                            <Link to={`/city/${_id}`} key={_id} className="col-10 col-lg-5 mb-4">
+                                                <div className="cities-img p-2"style={{backgroundImage: `URL(${src})`, backgroundSize: 'cover'}} >
                                                     <h3 className="w-100">{city + " - " + country}</h3>
                                                     <Button variant="warning" className="more-info">More Info</Button>
-                                                </Link> 
-                                            </div>
+                                                </div>
+                                            </Link> 
                                         )
                                         })
                                     :

@@ -1,3 +1,4 @@
+/* GLOBAL */
 html * {
     margin: 0;
     padding: 0;
@@ -9,43 +10,13 @@ body {
     background-color: #000000de;
 }
   
-.next-section {
-    display: none;
-}
-
-@media (min-width: 600px) {
-    .next-section {
-        display: flex;
-        border-radius: .8rem;
-        padding: .4rem .2rem 0 .2rem;
-        align-items: flex-end;
-        transition: .4s;
-    }
-    
-    #arrowDown {
-        position: absolute;
-        bottom: 2vh;
-        right: 20vw;
-        display: flex;
-        background-color: rgba(146, 193, 255, 0.788);
-        border-radius: .8rem;
-        padding: .4rem .3rem .2rem .3rem;
-        align-items: flex-end;
-        transition: .4s;
-    }
-    
-    #arrowDown:hover {
-        background-color: rgba(58, 58, 58, 0.788);
-    }
-}
+/* HEADER */
 
 nav a:hover {
     text-shadow: 0 0 4px #000000af;
     color: #8bb4ff;
     transition: .2s;
 }
-/* HEADER */
-
 .header-nav {
     display: flex;
     flex-direction: column;
@@ -120,6 +91,36 @@ header{
     display: none;
 }
 /* MAIN  */
+
+.next-section {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .next-section {
+        display: flex;
+        border-radius: .8rem;
+        padding: .4rem .2rem 0 .2rem;
+        align-items: flex-end;
+        transition: .4s;
+    }
+    
+    #arrowDown {
+        position: absolute;
+        bottom: 2vh;
+        right: 20vw;
+        display: flex;
+        background-color: rgba(146, 193, 255, 0.788);
+        border-radius: .8rem;
+        padding: .4rem .3rem .2rem .3rem;
+        align-items: flex-end;
+        transition: .4s;
+    }
+    
+    #arrowDown:hover {
+        background-color: rgba(58, 58, 58, 0.788);
+    }
+}
 
 main {
     flex-direction: column;
@@ -205,12 +206,20 @@ main {
         height: auto;
     }
 }
+
+.cta-cont {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .call-to-action {
-    margin-top: 13vh;
-    margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 30vh;
     min-width: 50%;
     justify-content: center;
     background-position: center;
@@ -223,15 +232,16 @@ main {
 }
 .btn-cta {
     color: #ffffff;
-    text-shadow: 0 0 3px #000000c2;
-    box-shadow: 0 0 5px #8f8f8fc7;
+    text-shadow: 0 0 3px #0000008c;
+    box-shadow: 1px 1px 5px #000000c7;
     transition: .5s;
 }
 .btn-cta:hover {
-    color: #00000091;
+    color: #ffffff;
     translate: ease all .5s;
+    text-shadow: 1px 1px 4px #0000008c;
     transform: scale(1.05);
-    box-shadow: 1px 1px 5px #8f8f8fc7;
+    box-shadow: 2px 2px 5px #000000c7;
 }
 
 .plane img{
@@ -244,7 +254,7 @@ main {
 }
 @media (min-width: 800px) {
     .plane img {
-        max-width: 30vw;
+        max-width: 25vw;
     }
 }
 
@@ -360,6 +370,9 @@ main {
 .swiper-button-next::after {
     color: #ffffff;
 }
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #ffffff;
+}
 /* FOOTER */
 
 footer {
@@ -419,7 +432,11 @@ footer a {
     margin-bottom: .3rem;
 }
 
-/* CITIES */
+/* CITIES PAGE */
+
+.container-cities {
+    padding: 0;
+}
 .spinner {
     width: 10rem;
 }
@@ -461,6 +478,7 @@ a {
 .hero-content-cities input {
     font-size: 1.1rem;
     border-radius: .5rem;
+    box-shadow: 1px 1px 4px #949494;
     padding: .3rem 1rem;
     border: none;
     outline: none;
@@ -514,7 +532,7 @@ a {
     padding: .4rem;
     color: #ffffff;
 }
-/* CITY */
+/* CITY PAGE */
 
 .hero-city {
     height: 60vh;
@@ -557,7 +575,7 @@ a {
     margin-top: 3rem;
 }
 
-/* ITINERARY */
+/* ITINERARIES */
 .itine-h2 {
     color: #ffffff;
     text-transform: uppercase;
@@ -580,8 +598,7 @@ a {
 }
 
 .img-bg {
-    width: 6.2rem;
-    height: 6.2rem;
+    padding: .14rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -648,3 +665,22 @@ a {
 .linkedin-logo img{
     width: 20px;
 }
+.accordion-button:not(.collapsed) {
+    color: #2a2a2a;
+    background-color: #f3f3f3;
+}
+.accordion-button:focus {
+    border-color: #ffffff;
+    box-shadow: none;
+}
+
+.likes {
+    display: flex;
+}
+/* LOG IN */
+
+
+
+/* SIGN UP */
+
+

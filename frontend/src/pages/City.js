@@ -39,7 +39,9 @@ class City extends React.Component {
                     itinerary.length > 0 ?
                     itinerary.map((itine, index) => {
                         return (
-                            <Itineraries itinerary={itine} key={index}/>
+                            <div key={index}>
+                                <Itineraries itinerary={itine}/>
+                            </div>
                         )
                     })
                     :

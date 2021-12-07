@@ -27,7 +27,7 @@ export default class Home extends React.Component {
                                 <h1 className="hero-h1">Welcome to <span className="my">My</span><span className="tine">Tine</span><span className="rary">rary</span></h1>
                             </div>
                             <div >
-                                <p className="hero-text">Find your perfect trip, designed by insiders who know and love their cities!</p>
+                                <p className="hero-text fs-5">Find your perfect trip, designed by insiders who know and love their cities!</p>
                             </div>
                             <div className="next-section">
                                 <a id="arrowDown" href="#sv"><img src={arrowDown} width="40" alt="Arrow down to next section"/></a>
@@ -36,10 +36,12 @@ export default class Home extends React.Component {
                                 <img src={plane} alt="Plane img"/>
                             </div>
                         </div>
-                        <div id="sv" className="main-sv" style={{backgroundImage: 'url("/assets/shanghai_sunset.jpg")'}}>
-                            <div className="call-to-action" style={{backgroundImage: 'url(/assets/worldmap.jpg)'}}>
-                                <p className="cta-text">Choose your dreams trip!<br/> Discover all our trips </p>                             
-                                <Link className="link" to="/cities"><Button variant="warning" className="fs-5 p-2 ps-4 pe-4 mt-2 btn-cta">Here</Button></Link>
+                        <div id="sv" className="main-sv">
+                            <div className="cta-cont">    
+                                <div className="call-to-action" style={{backgroundImage: 'url(/assets/worldmap.jpg)'}}>
+                                    <p className="cta-text fs-4">Choose your dreams trip!<br/> Discover all our trips </p>                             
+                                    <Link className="link" to="/cities"><Button variant="warning" className="fs-4 p-2 ps-5 pe-5 mt-2 btn-cta">Here</Button></Link>
+                                </div>
                             </div>
                             <div className="container-carousel">
                                 <h2 className="carousel-h2">Popular MyTineraries</h2>
