@@ -677,10 +677,88 @@ a {
 .likes {
     display: flex;
 }
+
 /* LOG IN */
+
+
 
 
 
 /* SIGN UP */
 
+.signup-container {
+    height: 90.8vh;
+    display: flex;
+    justify-content: center;
+}
+.signup-container h1{
+    color: #6e6e6e;
+    text-shadow: 1px 1px 4px #4d4d4d6b;   
+}
+.cont-form {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 5px #000000;
+    color: #6e6e6e;
+}
 
+@media (max-heigth: 800px) {
+    .cont-form {
+        margin-top: 9rem;
+    }
+}
+
+.form-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form input {
+    padding: .5rem 1rem;
+    border: none;
+    margin-bottom: .5rem;
+    max-width: 16rem;
+    box-shadow: 1px 1px 4px #4d4d4d6b;
+    border-radius: .5rem;
+    outline: none;
+}
+
+button img{
+    text-shadow: 0 0 2px #000000;
+}
+select {
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+    max-width: 16rem;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 4px #4d4d4d6b;
+    padding: .5rem;
+    color: #6e6e6e;
+}
+
+
+.btns { 
+    color: #ffffff;
+    text-shadow: 0 0 2px #000000;
+    background-color: #1bd3b1;
+    margin: 0;
+    translate: ease all .5s;
+    padding: .5rem 1rem;
+    border: none;
+    margin-bottom: .5rem;
+    box-shadow: 1px 1px 4px #4d4d4d6b;
+    border-radius: .5rem;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.btns:hover { 
+    text-shadow: 0 0 2px #000000;
+    translate: ease all .5s;
+    transform: scale(1.01);
+}

@@ -4,7 +4,7 @@ import './App.css'
 import Home from './pages/Home.js';
 import Cities from './pages/Cities.js';
 import CityWithoutProps from './pages/City';
-import LogIn from './pages/LogIn'
+import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Error404 from './pages/Error404';
 import { withRouter} from './utils/withRouter'
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="cities" element={<Cities />} />
           <Route path="city/:id" element={<City />} />
-        <Route path="login" element={<LogIn />}/>
+        <Route path="signin" element={<SignIn />}/>
         <Route path="signup" element={<SignUp/>}/>
 
         <Route path="*" element={<Error404 />} />

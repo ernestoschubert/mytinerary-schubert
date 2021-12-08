@@ -10,7 +10,7 @@ function Dropdown() {
     }
     return (
         <NavDropdown title={imgUser.img} id="nav-dropdown" menuVariant="dark">
-          <NavDropdown.Item as={Link} to="/login" eventKey="1">Log in</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/signin" eventKey="1">Log in</NavDropdown.Item>
           <NavDropdown.Item as={Link} to="/signup" eventKey="2">Sign Up</NavDropdown.Item>
         </NavDropdown>
     );
