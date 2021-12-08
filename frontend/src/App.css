@@ -687,15 +687,18 @@ a {
 /* SIGN UP */
 
 .signup-container {
-    height: 90.8vh;
     display: flex;
     justify-content: center;
+
+    min-height: 90.8;
 }
-.signup-container h1{
+.signup-container h1 {
     color: #6e6e6e;
     text-shadow: 1px 1px 4px #4d4d4d6b;   
 }
 .cont-form {
+    margin-top: 8rem;
+    margin-bottom: 2rem;
     background-color: #ffffff;
     padding: 2rem;
     border-radius: 1rem;
@@ -703,9 +706,12 @@ a {
     color: #6e6e6e;
 }
 
-@media (max-heigth: 800px) {
+@media (min-width: 960px) {
+    .signup-container {
+        height: 90.8vh;
+    }
     .cont-form {
-        margin-top: 9rem;
+        margin-top: 3rem;
     }
 }
 
