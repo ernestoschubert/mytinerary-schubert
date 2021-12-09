@@ -6,13 +6,17 @@ import { Link } from 'react-router-dom';
 
 const SignUp = () => {
 
-    const [countrys, setCountrys] = useState([])
+    const [countries, setCountries] = useState([])
 
     useEffect(() => {
             axios.get('https://restcountries.com/v2/all?fields=name')
-            .then(res => setCountrys(res.data))
+            .then(res => setCountries(res.data))
             .catch(err => console.error(err))
         }, [])
+
+    const hadleSubmit = async(username, password) => {
+        
+    }
 
     const google = "/assets/google.png";
 
@@ -31,8 +35,8 @@ const SignUp = () => {
                             <select id="select-state">
                                 <option defaultValue value="choose you country">Choouse your country</option>
                                 {   
-                                    countrys.length !== 0 ?
-                                    countrys.map((country, index) => {
+                                    countries.length !== 0 ?
+                                    countries.map((country, index) => {
                                         return <option key={index} value={country.name}>{country.name}</option>
                                     })
                                     :
@@ -53,6 +57,11 @@ const SignUp = () => {
             <Footer />
         </>
     )
+}
+
+
+const mapDispatchToProps= {
+
 }
 
 export default SignUp
