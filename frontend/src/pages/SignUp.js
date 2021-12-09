@@ -41,7 +41,7 @@ const SignUp = () => {
                             </select>
                             <button type="submit" className="mt-2 ps-4 pe-4 btns">Create account</button>
                             <p>or</p>
-                            <button type="submit" className="mb-2 ps-4 pe-4 btns">Sign Up with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button>
+                            <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign Up with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button>
 
                         </form>
                         <div> 

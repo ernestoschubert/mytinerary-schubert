@@ -7,7 +7,9 @@ html * {
 }
 
 body {
-    background-color: #000000de;
+    /* background-color: #000000de; */
+    background-image: linear-gradient(to bottom, #252525, #1d1d1d, #161616, #0d0d0d, #000000);
+    background-attachment: fixed;
 }
   
 /* HEADER */
@@ -522,6 +524,7 @@ a {
 .more-info:hover {
     color: #fff2f2;
     transition: ease all .5s;
+    text-shadow: 0 0 3px #000000;
     transform: scale(1.02);
 }
 .not-found {
@@ -725,7 +728,7 @@ a {
 form input {
     padding: .5rem 1rem;
     border: none;
-    margin-bottom: .5rem;
+    margin-bottom: .8rem;
     max-width: 16rem;
     box-shadow: 1px 1px 4px #4d4d4d6b;
     border-radius: .5rem;
@@ -740,6 +743,7 @@ select {
     border: none;
     border-radius: .5rem;
     max-width: 16rem;
+    margin-bottom: .5rem;
     background-color: #ffffff;
     box-shadow: 1px 1px 4px #4d4d4d6b;
     padding: .5rem;
