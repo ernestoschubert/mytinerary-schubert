@@ -15,7 +15,7 @@ const SignUp = () => {
         }, [])
 
     const hadleSubmit = async(username, password) => {
-        
+        // props.signUpUser()
     }
 
     const google = "/assets/google.png";
@@ -32,8 +32,8 @@ const SignUp = () => {
                             <input type="email" placeholder="email@email.com"/>
                             <input type="password" placeholder="*******"/>
                             <input type="url" placeholder="URL Profile Image" />
-                            <select id="select-state">
-                                <option defaultValue value="choose you country">Choouse your country</option>
+                            <select  defaultValue="choose your country" id="select-state">
+                                <option disabled value="choose your country">Choose your country</option>
                                 {   
                                     countries.length !== 0 ?
                                     countries.map((country, index) => {

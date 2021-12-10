@@ -692,7 +692,6 @@ a {
 .signup-container {
     display: flex;
     justify-content: center;
-
     min-height: 90.8;
 }
 .signup-container h1 {
@@ -715,6 +714,7 @@ a {
     }
     .cont-form {
         margin-top: 3rem;
+        padding: 2rem 5rem;
     }
 }
 
@@ -730,6 +730,7 @@ form input {
     border: none;
     margin-bottom: .8rem;
     max-width: 16rem;
+    width: 16rem;
     box-shadow: 1px 1px 4px #4d4d4d6b;
     border-radius: .5rem;
     outline: none;

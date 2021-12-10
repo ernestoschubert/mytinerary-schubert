@@ -4,7 +4,8 @@ import itinerariesReducer from "./itinerariesReducer";
 
 const rootReducer = combineReducers({
     cities: citiesReducer,
-    itineraries: itinerariesReducer
+    itineraries: itinerariesReducer,
+    // users: usersReducer,
 })
 
 export default rootReducer;
