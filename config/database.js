@@ -2,9 +2,7 @@ const mongoose = require('mongoose')
 
 mongoose.connect(process.env.MONGODB, {
     useUnifiedTopology: true,
-    // useCreateIndex: true,
-    useNewUrlParser: true,
-    // useFindAndModify: false
+    useNewUrlParser: true
 })
 .then(() => console.log("Database connected"))
 .catch(err => console.error(err))

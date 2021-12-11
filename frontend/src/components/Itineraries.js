@@ -7,8 +7,8 @@ const Itineraries = (props) => {
     const {id} = useParams()
 
     const [viewMoreLess, setViewMoreLess] = useState(false);
-    const {_id, src, firstName, lastName, likes, title, price, duration, hastags} = props.itinerary
 
+    const {_id, src, firstName, lastName, likes, title, price, duration, hastags} = props.itinerary;
 
     return (
         <div key={_id} className="itineraries-container mb-2 mt-2">
@@ -27,7 +27,7 @@ const Itineraries = (props) => {
                 <div className="ms-4">
                     <div className="likes">
                         <img src='/assets/heart.svg' width="24" alt='heart'/>
-                        <span className="mt-3">{likes}</span>
+                        <span className="mt-3">{likes.length === 1 && likes[0] === 0 ? likes : likes.length}</span>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@ const Itineraries = (props) => {
                     <p className="italic-shadow">Price: {("💸").repeat(price)}</p>
                     <p className="italic-shadow">Duration: {("⏱️").repeat(duration)}</p>
                     <p className="italic-shadow">Hastags: {hastags.map((hastag, index) => {
-                        return <a href={`/city/${id}`} key={index} className="ms-2">{hastag}</a>
-                        })}
+                                return <a href={`/city/${id}`} key={index} className="ms-2">{hastag}</a>
+                            })}
                     </p>
                 </div>
             </div>
