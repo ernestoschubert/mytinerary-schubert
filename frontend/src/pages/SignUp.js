@@ -27,7 +27,6 @@ const SignUp = (props) => {
 
 
     const inputHandler = (e) => {
-        // console.log("name " + e.target.name + " " + "value " + e.target.value)
         setNewUser({
             ...newUser,
             [e.target.name]: e.target.value

@@ -4,7 +4,7 @@ const itineraryControllers = require('../controllers/itineraryControllers');
 const userControllers = require("../controllers/userControllers");
 const { getCities, postCity, getCity, deleteCity, putCity  } = citiesControllers;
 const { getItineraries, postItinerary, getItinerary, deleteItinerary, putItinerary, getCityItineraries } =  itineraryControllers;
-const {addNewUser} = userControllers;
+const {addNewUser, getUsers, getUser, deleteUser, putUser} = userControllers;
 const validator = require("../controllers/validator")
 
 Router.route('/cities')
@@ -28,6 +28,14 @@ Router.route('/itineraries/:id')
 Router.route('/itineraries/city/:id')
 .get(getCityItineraries)
 
+
+Router.route('/users')
+.get(getUsers)
+
+Router.route('/users/:id')
+.get(getUser)
+.delete(deleteUser)
+.put(putUser)
 
 Router.route('/users/signup')
 .post(validator, addNewUser)
