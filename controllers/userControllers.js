@@ -8,12 +8,24 @@ const userControllers = {
         const hashedPassword = bcryptjs.hashSync(password)
         const newUser = new User({firstName, lastName, email, password: hashedPassword,userImg,country, googleAccount})
         try {
-            console.log(newUser)
-            let repeatedUser = await User.findOne({email})
+            const repeatedUser = await User.findOne({email})
             if(repeatedUser) throw new Error
             await newUser.save()
             res.json({success: true, response: {firstName: newUser.firstName, _id: newUser._id}, error: null})
         } catch(error) {
+            res.json({success: false, response: error.message})
+        }
+    },
+    signInUser:  async (req,res) => {
+        const {email, password, googleAccount} = req.body 
+        try {
+            const savedUser = await User.findOne({email})
+            if (savedUser.googleAccount && !googleAccount) throw new Error ("Invalid email")
+            if (!savedUser) throw new Error ("Email or password incorrect")
+            const match = bcryptjs.compareSync(password, savedUser.password)
+            if (!match) throw new Error ("Email or password incorrect")
+            res.json({success: true, response: {firstName: savedUser.firstName}})
+        } catch (error) {
             res.json({success: false, response: error.message})
         }
     },

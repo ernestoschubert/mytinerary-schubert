@@ -17,10 +17,10 @@ const usersActions = {
         }
     },
 
-    signInUser: (signUser) => {
+    signInUser: (logInUser) => {
         return async(dispatch, getState) => {
             try {
-                const response = await axios.post('http://localhost:4000/api/users/signin', {...signUser})
+                const response = await axios.post('http://localhost:4000/api/users/signin', {...logInUser})
                 if(response.data.success){
                     dispatch({type: 'LOG_USER', payload: response.data.response})
                 }

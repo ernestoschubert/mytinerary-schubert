@@ -1,4 +1,4 @@
-const usersReducer = (state = {userImg:null, firstName: null, lastName: null}, action) => {
+const usersReducer = (state = {userImg: null, firstName: null, lastName: null}, action) => {
 
     if(action.type === 'LOG_USER') {
         return {

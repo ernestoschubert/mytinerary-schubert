@@ -35,14 +35,27 @@ const SignUp = (props) => {
     
     const google = "/assets/google.png";
 
-    console.log(newUser)
-
+    const onSubmit = (e) => {
+        return (
+            e.preventDefault(),
+            props.signUpUser(newUser)
+        )
+    }
+    console.log(props)
     return (
         <>
             <Header />
                 <main className="signup-container">
                     <div className="cont-form">
-                        <h1 className="mb-3">Sign Up</h1>
+                       {props.firstName !== null ? 
+                       <><h1>Hi {props.firstName}</h1>
+                            <p>Your account has been created succesfully</p>
+                            <img src={props.userImg} width="100" alt='user profile'/>
+                            <p>Click here to go <Link to="/">Home</Link></p>
+                       </>
+                       : 
+                       <>
+                        <h1 className="mb-3"> Sign Up</h1>
                         <form className="form-style">
                             <input type="text" onChange={inputHandler} name="firstName" placeholder="First Name"/>
                             <input type="text" onChange={inputHandler} name="lastName" placeholder="Last Name"/>
@@ -60,7 +73,7 @@ const SignUp = (props) => {
                                     <option>Loading...</option>
                                 }
                             </select>
-                            <button onClick={()=> props.signUpUser(newUser)} className="mt-2 ps-4 pe-4 btns">Create account</button>
+                            <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Create account</button>
                             <p>or</p>
                             <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign Up with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button>
 
@@ -68,6 +81,7 @@ const SignUp = (props) => {
                         <div> 
                             <p>Already has an account? <Link to="/signin"> Sign In</Link></p> 
                         </div>
+                        </>}
                     </div>
 
                 </main>
@@ -76,9 +90,11 @@ const SignUp = (props) => {
     )
 }
 
-const mapStateToProps= (state)=> {
+const mapStateToProps = (state) => {
     return {
-        firstName : state.users.firstName
+        firstName : state.users.firstName,
+        lastName: state.users.lastName,
+        userImg: state.users.userImg
     }
 }
 
