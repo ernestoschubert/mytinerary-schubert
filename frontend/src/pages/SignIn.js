@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import PasswordToggle from '../components/PasswordToggle';
-// import GoogleLogin from 'react-google-login';
+import GoogleLogin from 'react-google-login';
 // import GoogleLoginComp from '../components/GoogleLoginComp'
 
 const SignIn = (props) => {
-    const google = "/assets/google.png"
+    // const google = "/assets/google.png"
 
-    const [inputType, hideViewIcon] = PasswordToggle();
+    const [inputType, hideViewIcon, placeholderText] = PasswordToggle();
 
     const [logInUser, setLogInUser] = useState({
         email: "",
@@ -37,9 +37,15 @@ const SignIn = (props) => {
             props.signInUser(logInUser)
         )
     }
-    // const responseGoogle = (response) => {
-    //     console.log(response);
-    //   }
+
+    const responseGoogle = (res) => {
+        let googleUser = {
+            email: res.profileObj.email, 
+            password: res.profileObj.googleId,
+            google: true,
+        }
+        props.signInUser(googleUser)
+    }
 
     return (
         <>
@@ -47,22 +53,21 @@ const SignIn = (props) => {
                 <main className="signup-container">
                     <div className="cont-form">
                             {!props.firstName ? <>
-                            <h1 className="mb-3">{props.firstName !== null ? `Hi, ${props.firstName}` : "Sign In"}</h1>
+                            <h1 className="mb-4">Sign In</h1>
                             <form className="form-style">
                                 <input type="text" name="email" onChange={inputHandler} placeholder="Username or email"/>
-                                <input type={inputType} name="password" onChange={inputHandler} placeholder="*******"/>
+                                <input type={inputType} name="password" onChange={inputHandler} placeholder={placeholderText} autoComplete={inputType === 'text' ? 'off': 'nope'}/>
                                 <span className='password-toggle-icon'>{hideViewIcon}</span>
                                 <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Sign In</button>
                                 <p>or</p>
-                                <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign In with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button>
-                                {/* <GoogleLogin
+                                {/* <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign In with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button> */}
+                                <span className='google-btn mt-2 mb-2'><GoogleLogin
                                     clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
                                     buttonText="Sign Up with Google"
                                     onSuccess={responseGoogle}
                                     onFailure={responseGoogle}
                                     cookiePolicy={'single_host_origin'}
-                                /> */}
-                                {/* <GoogleLoginComp /> */}
+                                /></span>
                             </form>
                             <div> 
                                 <p>Don't you have an account yet? <Link to="/signup"> Sign Up</Link></p> 

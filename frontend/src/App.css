@@ -753,7 +753,6 @@ select {
     text-shadow: 0 0 2px #000000;
     background-color: #1bd3b1;
     margin: 0;
-    translate: ease all .5s;
     padding: .5rem 1rem;
     border: none;
     margin-bottom: .5rem;
@@ -765,9 +764,8 @@ select {
 }
 
 .btns:hover { 
+    background-color: #26e9c5;
     text-shadow: 0 0 2px #000000;
-    translate: ease all .5s;
-    transform: scale(1.01);
 }
 
 .img-user {
@@ -787,4 +785,17 @@ select {
     z-index: 1000;
     cursor: pointer;
     width: 20px;
+}
+
+.google-btn button {
+    color: #ffffff!important;
+    text-shadow: 0 0 2px #000000;
+    background-color: #1bd3b1!important;
+    border-radius: .5rem!important;
+    box-shadow: 1px 1px 4px #4d4d4d6b;
+    align-items: center;
+}
+
+.google-btn div {
+    background-color: #1bd3b1!important;
 }

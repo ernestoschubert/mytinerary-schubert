@@ -7,7 +7,9 @@ const PasswordToggle = () => {
 
     const inputType = visible ? "text" : "password";
 
-    return [inputType, hideViewIcon]
+    const placeholderText = visible ? "password" : "******";
+
+    return [inputType, hideViewIcon, placeholderText]
 }
 
 export default PasswordToggle;

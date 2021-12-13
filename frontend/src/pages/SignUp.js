@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import usersActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
 import PasswordToggle from '../components/PasswordToggle';
-// import GoogleLogin from 'react-google-login';
+import GoogleLogin from 'react-google-login';
 
 const SignUp = (props) => {
 
     const [countries, setCountries] = useState([])
     
-    const [inputType, hideViewIcon] = PasswordToggle();
+    const [inputType, hideViewIcon, placeholderText] = PasswordToggle();
 
     useEffect(() => {
             axios.get('https://restcountries.com/v2/all?fields=name')
@@ -36,7 +36,7 @@ const SignUp = (props) => {
         })
     }
     
-    const google = "/assets/google.png";
+    // const google = "/assets/google.png";
     
     const onSubmit = (e) => {
         return (
@@ -44,9 +44,22 @@ const SignUp = (props) => {
             props.signUpUser(newUser)
         )
     }
-    // const responseGoogle = (response) => {
-    //     console.log(response);
-    //   }
+    
+    const responseGoogle = (res) => {
+        console.log(res);
+        const googleUser = {
+            firstName: res.profileObj.givenName,
+            lastName: res.profileObj.familyName,
+            email: res.profileObj.email,
+            password: res.profileObj.googleId,
+            userImg: res.profileObj.imageUrl,
+            country: ' ',
+            googleAccount: true
+        }
+        props.signUpUser(googleUser)
+        .then((response) => response.data.success)
+        .catch((error) => console.log(error))
+      }
 
     return (
         <>
@@ -66,7 +79,7 @@ const SignUp = (props) => {
                             <input type="text" onChange={inputHandler} name="firstName" placeholder="First Name"/>
                             <input type="text" onChange={inputHandler} name="lastName" placeholder="Last Name"/>
                             <input type="email" onChange={inputHandler} name="email" placeholder="email@email.com"/>
-                            <input type={inputType} onChange={inputHandler} name="password" placeholder="*******"/>
+                            <input type={inputType} onChange={inputHandler} name="password" placeholder={placeholderText} autoComplete={inputType === 'text' ? 'off': 'nope'}/>
                             <span className='password-toggle-icon'>{hideViewIcon}</span>
                             <input type="url" onChange={inputHandler} name="userImg" placeholder="URL Profile Image" />
                             <select  defaultValue="choose your country" onChange={inputHandler} name="country" id="select-state">
@@ -82,14 +95,14 @@ const SignUp = (props) => {
                             </select>
                             <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Create account</button>
                             <p>or</p>
-                            <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign Up with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button>
-                            {/* <GoogleLogin
-                                clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
-                                buttonText="Sign Up with Google"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                            /> */}
+                            {/* <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign Up with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button> */}
+                            <span className='google-btn mt-2 mb-2'><GoogleLogin
+                                    clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
+                                    buttonText="Sign Up with Google"
+                                    onSuccess={responseGoogle}
+                                    onFailure={responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
+                            /></span>
                         </form>
                         <div> 
                             <p>Already has an account? <Link to="/signin"> Sign In</Link></p> 
@@ -98,7 +111,6 @@ const SignUp = (props) => {
                     </div>
 
                 </main>
-            {/* <Footer /> */}
         </>
     )
 }

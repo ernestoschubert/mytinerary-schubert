@@ -15,10 +15,7 @@ const usersReducer = (state = {userImg: null, firstName: null, lastName: null, t
             lastName : action.payload.lastName
         }
     } else if(action.type === 'LOG_OUT'){
-        localStorage.removeItem('token');
-        localStorage.removeItem('firstName');
-        localStorage.removeItem('lastName');
-        localStorage.removeItem('userImg');
+        localStorage.clear()
         return {
             token: null,
             userImg : null,
