@@ -13,7 +13,7 @@ const userControllers = {
             if(repeatedUser) throw new Error
             const token = jwt.sign({...newUser}, process.env.SECRETKEY)
             await newUser.save()
-            res.json({success: true, response: {firstName: newUser.firstName, _id: newUser._id, token}, error: null})
+            res.json({success: true, response: {firstName: newUser.firstName, lastName: newUser.lastName, userImg: newUser.userImg, _id: newUser._id, token}, error: null})
         } catch(error) {
             res.json({success: false, response: error.message})
         }

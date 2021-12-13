@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import PasswordToggle from '../components/PasswordToggle';
 import GoogleLogin from 'react-google-login';
+import Swal from 'sweetalert2'
 // import GoogleLoginComp from '../components/GoogleLoginComp'
 
 const SignIn = (props) => {
@@ -15,6 +16,20 @@ const SignIn = (props) => {
     const [logInUser, setLogInUser] = useState({
         email: "",
         password: ""
+    })
+
+    const [ errorInput, setErrorInput ] = useState(null)
+
+    const Alert = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: toast => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
     })
 
     const inputHandler = (e) => {
@@ -32,10 +47,36 @@ const SignIn = (props) => {
 
     const onSubmit = (e) => {
         console.log(logInUser)
-        return (
-            e.preventDefault(),
+        e.preventDefault()
+        // return (
+        //     props.signInUser(logInUser)
+        // )
+        let info = Object.values(logInUser).some(infoUser => infoUser === "")
+        if(info) {
+            Alert.fire({
+                icon: 'error',
+                title: 'There are fields incomplete, please complete them'
+            })
+        } else {
             props.signInUser(logInUser)
-        )
+            .then(response => {
+                if(!response.data.success) {
+                     Alert.fire({
+                     icon: 'error',
+                     title: 'Email and/or password incorrect'
+                   })
+                } else {
+                    Alert.fire({
+                        icon: 'success',
+                        title: 'Welcome back!'
+                    })
+                }
+            })
+            .catch(error => Alert.fire({
+                icon: 'error',
+                title: 'Email and/or password incorrect'
+            }))
+        }
     }
 
     const responseGoogle = (res) => {
@@ -45,7 +86,26 @@ const SignIn = (props) => {
             google: true,
         }
         props.signInUser(googleUser)
+        .then((response) => {
+            if (response.data.success){
+                Alert.fire({
+                    icon: 'success',
+                     title: 'Welcome back!'
+                  })
+            }
+            else{
+            setErrorInput(response.data.error)
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            Alert.fire({
+                icon: 'error',
+                title: 'You have to sign up before you log in!'
+              })
+        })
     }
+    
 
     return (
         <>

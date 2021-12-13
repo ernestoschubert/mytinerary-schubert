@@ -9,9 +9,7 @@ const usersActions = {
                 if(response.data.success) {
                     dispatch({type:'LOG_USER', payload: response.data.response});
                 } else {
-                    response.data.errors.map(error => {
-                        return alert(error.message)
-                    })
+                    console.log(response.data.errors)
                 }
             } catch(error) {
                 console.error(error)
@@ -26,7 +24,7 @@ const usersActions = {
                     console.log(response.data.response)
                     dispatch({type: 'LOG_USER', payload: response.data.response})
                 } else {
-                    alert(response.data.response)
+                    console.log(response.data.response)
                 }
                 return response
             } catch(error) {

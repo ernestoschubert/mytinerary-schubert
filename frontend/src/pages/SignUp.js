@@ -6,6 +6,7 @@ import usersActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
 import PasswordToggle from '../components/PasswordToggle';
 import GoogleLogin from 'react-google-login';
+import Swal from 'sweetalert2'
 
 const SignUp = (props) => {
 
@@ -35,12 +36,60 @@ const SignUp = (props) => {
             [e.target.name]: e.target.value
         })
     }
-    
+    const [ errorInput, setErrorInput ] = useState({})
+
+    const Alert = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: toast => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
     const onSubmit = (e) => {
-        return (
-            e.preventDefault(),
-            props.signUpUser(newUser)
-        )
+        e.preventDefault()
+        // props.signUpUser(newUser)
+        let info = Object.values(newUser).some(infoUser => infoUser === '')
+        if(info) {
+          Alert.fire({
+            icon: 'error',
+            title: 'There are fields incomplete, please complete them'
+          })
+        } else {
+          props.signUpUser(newUser)
+          .then(response => {
+            if(response.data.success) {
+              Alert.fire({
+                icon: 'success',
+                title: 'Your account has been created!'
+              })
+            } else if (response.data.errors) {
+              setErrorInput({})
+              response.data.errors.map(error => setErrorInput(messageError => {
+                return {
+                  ...messageError,
+                  [error.path]: error.message
+                }
+              }))
+            } else {
+              Alert.fire({
+                icon: 'error',
+                title: 'That email has already been used! Try with another one'
+              })
+            }
+          })
+          .catch(error => {
+            console.log(error)
+            Alert.fire({
+              icon: 'error',
+              title: 'We are having technicas difficulties! Come back later!'
+            })
+          })
+        }
     }
     
     const responseGoogle = (res) => {
@@ -55,8 +104,25 @@ const SignUp = (props) => {
             googleAccount: true
         }
         props.signUpUser(googleUser)
-        .then((response) => response.data.success)
-        .catch((error) => console.log(error))
+        .then((response) => {
+            if (response.data.success){
+                Alert.fire({
+                    icon: 'success',
+                     title: 'Your account has been created!'
+                  })
+            }
+            else{
+            setErrorInput(response.data.error)
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            Alert.fire({
+                icon: 'error',
+                title: 'Something went wrong! Come back later!'
+              })
+        })
+        
       }
 
     return (
@@ -75,12 +141,17 @@ const SignUp = (props) => {
                         <h1 className="mb-3"> Sign Up</h1>
                         <form className="form-style">
                             <input type="text" onChange={inputHandler} name="firstName" placeholder="First Name"/>
+                            <p className='text-danger'>{errorInput.firstName}</p>
                             <input type="text" onChange={inputHandler} name="lastName" placeholder="Last Name"/>
+                            <p className='text-danger'>{errorInput.lastName}</p>
                             <input type="email" onChange={inputHandler} name="email" placeholder="email@email.com"/>
+                            <p className='text-danger'>{errorInput.email}</p>
                             <span className='password-toggle-icon'>{hideViewIcon}
                             <input type={inputType} onChange={inputHandler} name="password" placeholder={placeholderText} autoComplete={inputType === 'text' ? 'off': 'nope'}/>
+                            <p className='text-danger'>{errorInput.password}</p>
                             </span>
                             <input type="url" onChange={inputHandler} name="userImg" placeholder="URL Profile Image" />
+                            <p className='text-danger'>{errorInput.userImg}</p>
                             <select  defaultValue="choose your country" onChange={inputHandler} name="country" id="select-state">
                                 <option disabled value="choose your country">Choose your country</option>
                                 {   
@@ -92,6 +163,7 @@ const SignUp = (props) => {
                                     <option>Loading...</option>
                                 }
                             </select>
+                            <p className='text-danger'>{errorInput.country}</p>
                             <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Create account</button>
                             <p>or</p>
                             <span className='google-btn mt-2 mb-2'><GoogleLogin

@@ -5,8 +5,7 @@ const usersReducer = (state = {userImg: null, firstName: null, lastName: null, t
         localStorage.setItem('firstName', action.payload.firstName);
         localStorage.setItem('lastName', action.payload.lastName);
         localStorage.setItem('userImg', action.payload.userImg);
-
-
+        
         return {
             ...state,
             token: action.payload.token,
