@@ -14,9 +14,21 @@ const usersReducer = (state = {userImg: null, firstName: null, lastName: null, t
             firstName : action.payload.firstName,
             lastName : action.payload.lastName
         }
+    } else if(action.type === 'LOG_OUT'){
+        localStorage.removeItem('token');
+        localStorage.removeItem('firstName');
+        localStorage.removeItem('lastName');
+        localStorage.removeItem('userImg');
+        return {
+            token: null,
+            userImg : null,
+            firstName : null,
+            lastName : null
+        }
     } else {
         return state
     }
 }
+
 
 export default usersReducer;

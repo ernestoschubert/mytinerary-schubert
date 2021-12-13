@@ -33,7 +33,13 @@ const usersActions = {
                 console.log(error)
             }
         }
-    }
+    },
+    
+    logOut: () => {
+        return async (dispatch, getState) => {
+            dispatch({type: "LOG_OUT"})
+        }
+    },
 
 
 

@@ -3,11 +3,14 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
+import PasswordToggle from '../components/PasswordToggle';
 // import GoogleLogin from 'react-google-login';
 // import GoogleLoginComp from '../components/GoogleLoginComp'
 
 const SignIn = (props) => {
     const google = "/assets/google.png"
+
+    const [inputType, hideViewIcon] = PasswordToggle();
 
     const [logInUser, setLogInUser] = useState({
         email: "",
@@ -47,7 +50,8 @@ const SignIn = (props) => {
                             <h1 className="mb-3">{props.firstName !== null ? `Hi, ${props.firstName}` : "Sign In"}</h1>
                             <form className="form-style">
                                 <input type="text" name="email" onChange={inputHandler} placeholder="Username or email"/>
-                                <input type="password" name="password" onChange={inputHandler} placeholder="*******"/>
+                                <input type={inputType} name="password" onChange={inputHandler} placeholder="*******"/>
+                                <span className='password-toggle-icon'>{hideViewIcon}</span>
                                 <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Sign In</button>
                                 <p>or</p>
                                 <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign In with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button>

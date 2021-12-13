@@ -4,12 +4,15 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import usersActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
+import PasswordToggle from '../components/PasswordToggle';
 // import GoogleLogin from 'react-google-login';
 
 const SignUp = (props) => {
 
     const [countries, setCountries] = useState([])
     
+    const [inputType, hideViewIcon] = PasswordToggle();
+
     useEffect(() => {
             axios.get('https://restcountries.com/v2/all?fields=name')
             .then(res => setCountries(res.data))
@@ -63,7 +66,8 @@ const SignUp = (props) => {
                             <input type="text" onChange={inputHandler} name="firstName" placeholder="First Name"/>
                             <input type="text" onChange={inputHandler} name="lastName" placeholder="Last Name"/>
                             <input type="email" onChange={inputHandler} name="email" placeholder="email@email.com"/>
-                            <input type="password" onChange={inputHandler} name="password" placeholder="*******"/>
+                            <input type={inputType} onChange={inputHandler} name="password" placeholder="*******"/>
+                            <span className='password-toggle-icon'>{hideViewIcon}</span>
                             <input type="url" onChange={inputHandler} name="userImg" placeholder="URL Profile Image" />
                             <select  defaultValue="choose your country" onChange={inputHandler} name="country" id="select-state">
                                 <option disabled value="choose your country">Choose your country</option>

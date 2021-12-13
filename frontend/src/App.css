@@ -778,3 +778,13 @@ select {
     border-radius: 50%;
     background-size: 100% auto;
 }
+
+
+.password-toggle-icon img {
+    position: relative;
+    top: -46px;
+    right: -104px;
+    z-index: 1000;
+    cursor: pointer;
+    width: 20px;
+}
