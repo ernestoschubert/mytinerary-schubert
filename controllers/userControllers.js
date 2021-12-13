@@ -21,16 +21,19 @@ const userControllers = {
     signInUser:  async (req,res) => {
         const {email, password, google} = req.body 
         try {
-            const savedUser = await User.findOne({email})
-            if (!savedUser) throw new Error ("Email or password incorrect");
-            if (savedUser.googleAccount && !google) throw new Error ("Invalid email");
-            const match = bcryptjs.compareSync(password, savedUser.password);
-            if (!match) throw new Error ("Email or password incorrect");
-            const token = jwt.sign({...savedUser}, process.env.SECRETKEY)
-            res.json({success: true, response: {firstName: savedUser.firstName, userImg: savedUser.userImg, lastName: savedUser.lastName, token}})
+            const user = await User.findOne({email})
+            if (!user) throw new Error ("Email or password incorrect");
+            if (user.googleAccount && !google) throw new Error ("Invalid email");
+            const isPassword = bcryptjs.compareSync(password, user.password);
+            if (!isPassword) throw new Error ("Email or password incorrect");
+            const token = jwt.sign({...user}, process.env.SECRETKEY)
+            res.json({success: true, response:{token, firstName: user.firstName, userImg: user.userImg, lastName: user.lastName}})
         } catch (error) {
             res.json({success: false, response: error.message})
         }
+    },
+    verifyToken : (req, res) => {
+        res.json({firstName: req.user.firstName, userImg:req.user.userImg, lastName:req.user.lastName})
     },
     getUsers: (req, res) => {
         User.find()
@@ -51,7 +54,7 @@ const userControllers = {
         User.findOneAndUpdate({_id: req.params.id}, {...req.body})
         .then(()=> res.json({success: true}))
         .catch(err => console.error(err))
-    } 
+    }
 }
 
 

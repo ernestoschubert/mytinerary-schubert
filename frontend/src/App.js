@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Home from './pages/Home.js';
@@ -12,12 +12,27 @@ import ScrollToTop from './components/ScrollToTop';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
+import { connect } from 'react-redux';
+import usersActions from './redux/actions/usersActions';
+
 
 const City = withRouter(CityWithoutProps)
 
-const App = () => {
+const App = (props) => {
+
+  console.log(props)
+
+  useEffect(()=>{
+    const { signInUserLS} = props
+    if(localStorage.getItem('token')){
+        signInUserLS(localStorage.getItem('token'))
+        console.log(localStorage.getItem('token'))
+    }
+  },[])
+
   return (
     <BrowserRouter>
     <ScrollToTop />
@@ -28,9 +43,18 @@ const App = () => {
         <Route path="signin" element={<SignIn />}/>
         <Route path="signup" element={<SignUp/>}/>
 
-        <Route path="*" element={<Error404 />} />
+        <Route path="*" element={<Navigate to="/"/>} />
       </Routes>
     </BrowserRouter>
 )};
 
-export default App;
+const mapStateToProps = (state) => {
+  return{
+      token: state.users.token
+  }
+}
+const mapDispatchToProps = {
+  signInUserLS: usersActions.signInUserLS
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -56,8 +56,9 @@ const SignIn = (props) => {
                             <h1 className="mb-4">Sign In</h1>
                             <form className="form-style">
                                 <input type="text" name="email" onChange={inputHandler} placeholder="Username or email"/>
+                                <span className='password-toggle-icon'>{hideViewIcon}
                                 <input type={inputType} name="password" onChange={inputHandler} placeholder={placeholderText} autoComplete={inputType === 'text' ? 'off': 'nope'}/>
-                                <span className='password-toggle-icon'>{hideViewIcon}</span>
+                                </span>
                                 <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Sign In</button>
                                 <p>or</p>
                                 {/* <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign In with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button> */}

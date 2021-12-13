@@ -36,8 +36,6 @@ const SignUp = (props) => {
         })
     }
     
-    // const google = "/assets/google.png";
-    
     const onSubmit = (e) => {
         return (
             e.preventDefault(),
@@ -79,8 +77,9 @@ const SignUp = (props) => {
                             <input type="text" onChange={inputHandler} name="firstName" placeholder="First Name"/>
                             <input type="text" onChange={inputHandler} name="lastName" placeholder="Last Name"/>
                             <input type="email" onChange={inputHandler} name="email" placeholder="email@email.com"/>
+                            <span className='password-toggle-icon'>{hideViewIcon}
                             <input type={inputType} onChange={inputHandler} name="password" placeholder={placeholderText} autoComplete={inputType === 'text' ? 'off': 'nope'}/>
-                            <span className='password-toggle-icon'>{hideViewIcon}</span>
+                            </span>
                             <input type="url" onChange={inputHandler} name="userImg" placeholder="URL Profile Image" />
                             <select  defaultValue="choose your country" onChange={inputHandler} name="country" id="select-state">
                                 <option disabled value="choose your country">Choose your country</option>
@@ -95,7 +94,6 @@ const SignUp = (props) => {
                             </select>
                             <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Create account</button>
                             <p>or</p>
-                            {/* <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign Up with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button> */}
                             <span className='google-btn mt-2 mb-2'><GoogleLogin
                                     clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
                                     buttonText="Sign Up with Google"

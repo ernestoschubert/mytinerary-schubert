@@ -776,12 +776,16 @@ select {
     border-radius: 50%;
     background-size: 100% auto;
 }
-
+@media(min-width: 359px) {
+    .password-toggle-icon{
+        margin-right: 1.28rem;
+    }
+}
 
 .password-toggle-icon img {
     position: relative;
-    top: -46px;
-    right: -104px;
+    top: -2px;
+    right: -237px;
     z-index: 1000;
     cursor: pointer;
     width: 20px;
