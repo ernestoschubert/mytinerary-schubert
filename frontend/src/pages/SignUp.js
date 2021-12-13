@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Footer from "../components/Footer";
+import { useEffect, useState } from 'react';
 import Header from "../components/Header";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import usersActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
+// import GoogleLogin from 'react-google-login';
 
 const SignUp = (props) => {
 
@@ -34,14 +34,17 @@ const SignUp = (props) => {
     }
     
     const google = "/assets/google.png";
-
+    
     const onSubmit = (e) => {
         return (
             e.preventDefault(),
             props.signUpUser(newUser)
         )
     }
-    console.log(props)
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    //   }
+
     return (
         <>
             <Header />
@@ -76,7 +79,13 @@ const SignUp = (props) => {
                             <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Create account</button>
                             <p>or</p>
                             <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign Up with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button>
-
+                            {/* <GoogleLogin
+                                clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
+                                buttonText="Sign Up with Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                            /> */}
                         </form>
                         <div> 
                             <p>Already has an account? <Link to="/signin"> Sign In</Link></p> 
@@ -85,7 +94,7 @@ const SignUp = (props) => {
                     </div>
 
                 </main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

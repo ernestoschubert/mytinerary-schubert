@@ -3,16 +3,16 @@ const joi = require('joi');
 const validator = (req, res, next) => {
     const schema = joi.object({
         firstName: joi.string().trim().min(2).required().messages({
-            "string.empty" : "You must complete the field",
+            "string.empty" : 'You must complete the field "First Name"',
             "string.min": "Your name must be at least 2 characters long"
         }),
         lastName: joi.string().trim().min(2).required().messages({
-            "string.empty" : "You must complete the field",
+            "string.empty" : 'You must complete the field "Last Name"',
             "string.min": "Your name must be at least 2 characters long"
         }),
         email: joi.string().email().trim().required(),
         password: joi.string().trim().min(6).required().messages({
-            "string.empty": "You must complete the field password"
+            "string.empty": 'You must complete the field "Password"'
         }),
         userImg: joi.string().trim().messages({
             "string.empty": 'You must complete the field "URL Profile Image"'

@@ -7,10 +7,12 @@ const usersActions = {
             try {    
                 const response = await axios.post('http://localhost:4000/api/users/signup', {...newUser})
                 if(response.data.success) {
-                    console.log(response)
-                    console.log(response.data)
-                   dispatch({type:'LOG_USER', payload: response.data.response})
-            }
+                    dispatch({type:'LOG_USER', payload: response.data.response});
+                } else {
+                    response.data.errors.map(error => {
+                        return alert(error.message)
+                    })
+                }
             } catch(error) {
                 console.error(error)
             }
@@ -23,6 +25,8 @@ const usersActions = {
                 const response = await axios.post('http://localhost:4000/api/users/signin', {...logInUser})
                 if(response.data.success){
                     dispatch({type: 'LOG_USER', payload: response.data.response})
+                } else {
+                    alert(response.data.response)
                 }
                 return response
             } catch(error) {

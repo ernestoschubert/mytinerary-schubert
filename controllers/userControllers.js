@@ -1,30 +1,33 @@
 const User = require('../models/User');
 const bcryptjs = require('bcryptjs');
-
+const jwt = require('jsonwebtoken');
 
 const userControllers = { 
     addNewUser: async (req, res) => {
         const {firstName, lastName, email, password, userImg, country, googleAccount} = req.body
+        console.log(req)
         const hashedPassword = bcryptjs.hashSync(password)
         const newUser = new User({firstName, lastName, email, password: hashedPassword,userImg,country, googleAccount})
         try {
             const repeatedUser = await User.findOne({email})
             if(repeatedUser) throw new Error
+            const token = jwt.sign({...newUser}, process.env.SECRETKEY)
             await newUser.save()
-            res.json({success: true, response: {firstName: newUser.firstName, _id: newUser._id}, error: null})
+            res.json({success: true, response: {firstName: newUser.firstName, _id: newUser._id, token}, error: null})
         } catch(error) {
             res.json({success: false, response: error.message})
         }
     },
     signInUser:  async (req,res) => {
-        const {email, password, googleAccount} = req.body 
+        const {email, password, google} = req.body 
         try {
             const savedUser = await User.findOne({email})
-            if (savedUser.googleAccount && !googleAccount) throw new Error ("Invalid email")
-            if (!savedUser) throw new Error ("Email or password incorrect")
-            const match = bcryptjs.compareSync(password, savedUser.password)
-            if (!match) throw new Error ("Email or password incorrect")
-            res.json({success: true, response: {firstName: savedUser.firstName}})
+            if (!savedUser) throw new Error ("Email or password incorrect");
+            if (savedUser.googleAccount && !google) throw new Error ("Invalid email");
+            const match = bcryptjs.compareSync(password, savedUser.password);
+            if (!match) throw new Error ("Email or password incorrect");
+            const token = jwt.sign({...savedUser}, process.env.SECRETKEY)
+            res.json({success: true, response: {firstName: savedUser.firstName, userImg: savedUser.userImg, lastName: savedUser.lastName, token}})
         } catch (error) {
             res.json({success: false, response: error.message})
         }

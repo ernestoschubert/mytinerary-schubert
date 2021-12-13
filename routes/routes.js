@@ -6,6 +6,9 @@ const { getCities, postCity, getCity, deleteCity, putCity  } = citiesControllers
 const { getItineraries, postItinerary, getItinerary, deleteItinerary, putItinerary, getCityItineraries } =  itineraryControllers;
 const {addNewUser, signInUser, getUsers, getUser, deleteUser, putUser} = userControllers;
 const validator = require("../controllers/validator")
+const passport = require('passport')
+
+
 
 Router.route('/cities')
 .get(getCities)
