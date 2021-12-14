@@ -25,12 +25,11 @@ const App = (props) => {
   console.log(props)
 
   useEffect(()=>{
-    const { signInUserLS} = props
+    const { signInUserLS } = props
     if(localStorage.getItem('token')){
         signInUserLS(localStorage.getItem('token'))
-        console.log(localStorage.getItem('token'))
     }
-  },[])
+  },[props])
 
   return (
     <BrowserRouter>
@@ -39,8 +38,9 @@ const App = (props) => {
         <Route path="/" element={<Home />} />
         <Route path="cities" element={<Cities />} />
           <Route path="city/:id" element={<City />} />
-        <Route path="signin" element={<SignIn />}/>
-        <Route path="signup" element={<SignUp/>}/>
+        
+        {!props.firstName && (<Route path="signin" element={<SignIn />}/>)}
+        {!props.firstName && (<Route path="signup" element={<SignUp/>}/>)}
 
         <Route path="*" element={<Navigate to="/"/>} />
       </Routes>
@@ -49,7 +49,8 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return{
-      token: state.users.token
+      token: state.users.token,
+      firstName: state.users.firstName
   }
 }
 const mapDispatchToProps = {

@@ -48,9 +48,6 @@ const SignIn = (props) => {
     const onSubmit = (e) => {
         console.log(logInUser)
         e.preventDefault()
-        // return (
-        //     props.signInUser(logInUser)
-        // )
         let info = Object.values(logInUser).some(infoUser => infoUser === "")
         if(info) {
             Alert.fire({
@@ -94,7 +91,7 @@ const SignIn = (props) => {
                   })
             }
             else{
-            setErrorInput(response.data.error)
+            setErrorInput(response.data.errors)
             }
         })
         .catch((error) => {
@@ -105,7 +102,7 @@ const SignIn = (props) => {
               })
         })
     }
-    
+    console.log(errorInput)
 
     return (
         <>
@@ -116,14 +113,13 @@ const SignIn = (props) => {
                             <h1 className="mb-4">Sign In</h1>
                             <form className="form-style">
                                 <input type="text" name="email" onChange={inputHandler} placeholder="Username or email"/>
-                                <p className='text-danger'>{errorInput.email}</p>
+                                {/* <p className='text-danger'>{errorInput.email}</p> */}
                                 <span className='password-toggle-icon'>{hideViewIcon}
                                 <input type={inputType} name="password" onChange={inputHandler} placeholder={placeholderText} autoComplete={inputType === 'text' ? 'off': 'nope'}/>
                                 </span>
-                                <p className='text-danger'>{errorInput.password}</p>
+                                {/* <p className='text-danger'>{errorInput.password}</p> */}
                                 <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Sign In</button>
                                 <p>or</p>
-                                {/* <button type="submit" className="mt-2 mb-2 ps-4 pe-4 btns">Sign In with <img src={google} width="18" className="ms-1" alt="google"/>oogle</button> */}
                                 <span className='google-btn mt-2 mb-2'><GoogleLogin
                                     clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
                                     buttonText="Sign Up with Google"

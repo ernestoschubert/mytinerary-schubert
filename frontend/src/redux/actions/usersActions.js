@@ -45,7 +45,10 @@ const usersActions = {
                         Authorization: `Bearer ${token}`,
                         }
                 })
-                dispatch({type:"LOG_USER", payload:{token, firstName:response.data.firstName, lastName: response.data.lastName, userImg: response.data.userImg}})
+                const userCheck = {
+                    token, firstName:response.data.firstName, lastName: response.data.lastName, userImg: response.data.userImg
+                }
+                dispatch({type:"LOG_USER", payload: userCheck})
             }catch(error) {
                 console.log(error)
                return  dispatch({type:'LOG_OUT' })
