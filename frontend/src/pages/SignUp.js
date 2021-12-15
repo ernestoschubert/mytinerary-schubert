@@ -143,7 +143,7 @@ const SignUp = (props) => {
                               <select  defaultValue="choose your country" onChange={inputHandler} name="country" id="select-state">
                                   <option disabled value="choose your country">Choose your country</option>
                                   {   
-                                      allCountries.length !== 0 ?
+                                      allCountries.length > 0 ?
                                       allCountries.map((country, index) => {
                                         return <option key={index} value={country.name}>{country.name}</option>
                                       })
