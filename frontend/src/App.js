@@ -22,14 +22,13 @@ const City = withRouter(CityWithoutProps)
 
 const App = (props) => {
 
-  console.log(props)
-
+  const { signInUserLS } = props
   useEffect(()=>{
-    const { signInUserLS } = props
     if(localStorage.getItem('token')){
         signInUserLS(localStorage.getItem('token'))
     }
-  },[props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <BrowserRouter>
@@ -39,8 +38,8 @@ const App = (props) => {
         <Route path="cities" element={<Cities />} />
           <Route path="city/:id" element={<City />} />
         
-        {!props.firstName && (<Route path="signin" element={<SignIn />}/>)}
-        {!props.firstName && (<Route path="signup" element={<SignUp/>}/>)}
+        {!props.token && (<Route path="signin" element={<SignIn />}/>)}
+        {!props.token && (<Route path="signup" element={<SignUp/>}/>)}
 
         <Route path="*" element={<Navigate to="/"/>} />
       </Routes>
@@ -49,8 +48,7 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
   return{
-      token: state.users.token,
-      firstName: state.users.firstName
+      token: state.users.token
   }
 }
 const mapDispatchToProps = {

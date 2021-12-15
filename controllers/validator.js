@@ -12,7 +12,9 @@ const validator = (req, res, next) => {
         }),
         email: joi.string().email().trim().required(),
         password: joi.string().trim().min(6).required().messages({
-            "string.empty": 'You must complete the field "Password"'
+            "string.empty": 'You must complete the field "Password"',
+            "string.min": 'Password: Length must be at least 6 characters long'
+
         }),
         userImg: joi.string().trim().messages({
             "string.empty": 'You must complete the field "URL Profile Image"'

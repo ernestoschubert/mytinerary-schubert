@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import usersActions from '../redux/actions/usersActions';
+import Swal from 'sweetalert2';
+
 
 function Dropdown(props) {
     const userIcon = "/assets/account_circle_white_36dp.svg"
+
     const {firstName, lastName,userImg} = props
 
     const imgUser =( 
@@ -16,20 +19,32 @@ function Dropdown(props) {
         img: <img src={userIcon} alt="Profile user icon"/>
     })
 
-
-
-    useEffect(() => {
-      return () => {
-        console.log(props)
+    const Alert = Swal.mixin({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: toast => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
-    }, [props])
+    })
 
+    const onLogOut = (e) => {
+        e.preventDefault()
+        props.logOut()
+        Alert.fire({
+          icon: 'success',
+           title: 'You have been succesfully logged out!'
+        })
+    }
     
     return (
         <NavDropdown title={imgUser.img} id="nav-dropdown" menuVariant="dark">
           {firstName? <> 
             <NavDropdown.Item as={Link} to="/" eventKey="0">{ firstName + " " + lastName }</NavDropdown.Item>
-            <NavDropdown.Item onClick={() => props.logOut()} eventKey="1">Log Out</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e) => onLogOut(e)} eventKey="1">Log Out</NavDropdown.Item>
           </>
           :
           <>

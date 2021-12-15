@@ -1,15 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import PasswordToggle from '../components/PasswordToggle';
 import GoogleLogin from 'react-google-login';
-import Swal from 'sweetalert2'
-// import GoogleLoginComp from '../components/GoogleLoginComp'
+import Swal from 'sweetalert2';
 
 const SignIn = (props) => {
-    // const google = "/assets/google.png"
 
     const [inputType, hideViewIcon, placeholderText] = PasswordToggle();
 
@@ -18,11 +16,9 @@ const SignIn = (props) => {
         password: ""
     })
 
-    const [ errorInput, setErrorInput ] = useState(null)
-
     const Alert = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'bottom-end',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -38,15 +34,8 @@ const SignIn = (props) => {
             [e.target.name]: e.target.value
         })
     }
-    useEffect(() => {
-        return () => {
-        console.log(props)
-
-        }
-    }, [props])
 
     const onSubmit = (e) => {
-        console.log(logInUser)
         e.preventDefault()
         let info = Object.values(logInUser).some(infoUser => infoUser === "")
         if(info) {
@@ -60,18 +49,18 @@ const SignIn = (props) => {
                 if(!response.data.success) {
                      Alert.fire({
                      icon: 'error',
-                     title: 'Email and/or password incorrect'
+                     title: 'Email or password incorrect'
                    })
                 } else {
                     Alert.fire({
                         icon: 'success',
-                        title: 'Welcome back!'
+                        title: 'Welcome! You have been successfully logged'
                     })
                 }
             })
             .catch(error => Alert.fire({
                 icon: 'error',
-                title: 'Email and/or password incorrect'
+                title: 'Email or password incorrect'
             }))
         }
     }
@@ -87,11 +76,8 @@ const SignIn = (props) => {
             if (response.data.success){
                 Alert.fire({
                     icon: 'success',
-                     title: 'Welcome back!'
+                     title: 'Welcome! You have been successfully logged'
                   })
-            }
-            else{
-            setErrorInput(response.data.errors)
             }
         })
         .catch((error) => {
@@ -102,22 +88,19 @@ const SignIn = (props) => {
               })
         })
     }
-    console.log(errorInput)
+
 
     return (
         <>
             <Header />
                 <main className="signup-container">
                     <div className="cont-form">
-                            {!props.firstName ? <>
                             <h1 className="mb-4">Sign In</h1>
                             <form className="form-style">
                                 <input type="text" name="email" onChange={inputHandler} placeholder="Username or email"/>
-                                {/* <p className='text-danger'>{errorInput.email}</p> */}
                                 <span className='password-toggle-icon'>{hideViewIcon}
                                 <input type={inputType} name="password" onChange={inputHandler} placeholder={placeholderText} autoComplete={inputType === 'text' ? 'off': 'nope'}/>
                                 </span>
-                                {/* <p className='text-danger'>{errorInput.password}</p> */}
                                 <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Sign In</button>
                                 <p>or</p>
                                 <span className='google-btn mt-2 mb-2'><GoogleLogin
@@ -131,23 +114,16 @@ const SignIn = (props) => {
                             <div> 
                                 <p>Don't you have an account yet? <Link to="/signup"> Sign Up</Link></p> 
                             </div>
-                            </>:
-                            <><p>{props.firstName} you are logged successfully</p></>}
                     </div>
                 </main>
         </>
     )
 }
 
-const mapStateToProps= (state)=> {
-    return {
-        firstName : state.users.firstName,
-        userImg: state.users.userImg
-    }
-}
+
 
 const mapDispatchToProps = {
     signInUser: usersActions.signInUser
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);

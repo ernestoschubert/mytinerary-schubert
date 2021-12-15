@@ -1,35 +1,27 @@
 const axios = require('axios');
 
+
 const usersActions = {
 
     signUpUser: (newUser) => {
-        return async(dispatch, getState) => {
-            try {    
-                const response = await axios.post('http://localhost:4000/api/users/signup', {...newUser})
-                if(response.data.success) {
-                    dispatch({type:'LOG_USER', payload: response.data.response});
-                } else {
-                    console.log(response.data.errors)
-                }
-            } catch(error) {
-                console.error(error)
+        return async(dispatch, getState) => {    
+            const response = await axios.post('http://localhost:4000/api/users/signup', {...newUser})
+            if(response.data.success) {
+                dispatch({type:'LOG_USER', payload: response.data.response});
+            } else {
+                console.error(response)
             }
         }
     },
     signInUser: (logInUser) => {
         return async(dispatch, getState) => {
-            try {
-                const response = await axios.post('http://localhost:4000/api/users/signin', {...logInUser})
-                if(response.data.success){
-                    console.log(response.data.response)
-                    dispatch({type: 'LOG_USER', payload: response.data.response})
-                } else {
-                    console.log(response.data.response)
-                }
-                return response
-            } catch(error) {
-                console.log(error)
+            const response = await axios.post('http://localhost:4000/api/users/signin', {...logInUser})
+            if(response.data.success){
+                dispatch({type: 'LOG_USER', payload: response.data.response})
+            } else {
+                console.error(response.data.response)
             }
+            return response
         }
     },
     logOut: () => {
@@ -50,8 +42,18 @@ const usersActions = {
                 }
                 dispatch({type:"LOG_USER", payload: userCheck})
             }catch(error) {
-                console.log(error)
+                console.error(error)
                return  dispatch({type:'LOG_OUT' })
+            }
+        }
+    },
+    getCountries: () => {
+        return async (dispatch,getState) => {
+            try{
+                const response = await axios.get('https://restcountries.com/v2/all?fields=name')
+                dispatch({type: 'GET_ALL_COUNTRIES', payload: response.data})
+            } catch(error){
+                console.error(error)
             }
         }
     }
