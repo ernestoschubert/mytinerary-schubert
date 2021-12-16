@@ -15,18 +15,22 @@ const itineraryControllers = {
     getItinerary: (req, res) => {
         Itinerary.findOne({_id: req.params.id}).populate('city')
         .then((itinerary) => res.json({response:itinerary}))
+        .catch(err => console.log(err))
     },
     deleteItinerary: (req, res) => {
         Itinerary.findOneAndDelete({_id: req.params.id})
         .then(() => res.json({ success: true}))
+        .catch(err => console.log(err))
     },
     putItinerary: (req, res) => {
         Itinerary.findOneAndUpdate({_id: req.params.id}, {...req.body})
         .then(()=> res.json({success: true}))
+        .catch(err => console.log(err))
     }, 
     getCityItineraries: (req, res) => {
         Itinerary.find({city: req.params.id}).populate('city')
         .then(itineraries => res.json({response:itineraries}))
+        .catch(err => console.log(err))
     }
 }
 
