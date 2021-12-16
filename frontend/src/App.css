@@ -262,8 +262,8 @@ main {
 
 /* CAROUSEL SWIPER */
 
-.carousel-container {
-    width: 95vw;  
+.container-carousel {
+    margin-bottom: 2rem;  
 }
 
 .city-cont {
@@ -360,6 +360,7 @@ main {
     background-color: #0000006b;
     border-radius: 1rem;
     width: auto;
+    margin-bottom: 2rem;
     padding: .5rem 2rem;
 }
 

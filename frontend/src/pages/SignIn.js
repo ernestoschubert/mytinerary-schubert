@@ -104,7 +104,7 @@ const SignIn = (props) => {
                                 <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Sign In</button>
                                 <p>or</p>
                                 <span className='google-btn mt-2 mb-2'><GoogleLogin
-                                    clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
+                                    clientId='988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com'
                                     buttonText="Sign Up with Google"
                                     onSuccess={responseGoogle}
                                     onFailure={responseGoogle}

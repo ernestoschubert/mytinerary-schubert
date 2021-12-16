@@ -11,14 +11,15 @@ const SignUp = (props) => {
 
     const [inputType, hideViewIcon, placeholderText] = PasswordToggle();
     
-    const { getCountries } = props
+    const { getCountries } = props;
 
     useEffect(() => {
       getCountries()
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
-    const { allCountries } = props
+    const { allCountries } = props;
+    console.log(allCountries.length);
 
     const [newUser, setNewUser] = useState({
       firstName: '',
@@ -154,7 +155,7 @@ const SignUp = (props) => {
                               <button onClick={(e) => onSubmit(e)} className="mt-2 ps-4 pe-4 btns">Create account</button>
                               <p>or</p>
                               <span className='google-btn mt-2 mb-2'><GoogleLogin
-                                      clientId="988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com"
+                                      clientId='988627387814-jdnopntr6b8l3s5k0d2n9cjgkdnjbnsd.apps.googleusercontent.com'
                                       buttonText="Sign Up with Google"
                                       onSuccess={responseGoogle}
                                       onFailure={responseGoogle}
