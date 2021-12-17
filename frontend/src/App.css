@@ -613,11 +613,14 @@ a {
     box-shadow: 0 0 .15rem #000000c7;
 }
 .img-bg img{
-    background-position: center;
-    background-size: cover;
+    height: 6rem;
     width: 6rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
     border-radius: 40%;
+    background-size: 100% auto;
 }
+
 .cont-likes-publisher {
     display: flex;
     flex-direction: row;
@@ -682,6 +685,14 @@ a {
 
 .likes {
     display: flex;
+}
+.cont-likes {
+    margin-top: .8rem;
+}
+.like-heart {
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
 }
 
 /* SIGN UP  LOG IN */

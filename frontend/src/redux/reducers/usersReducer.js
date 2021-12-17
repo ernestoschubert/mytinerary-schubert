@@ -1,4 +1,4 @@
-const usersReducer = (state = {userImg: null, firstName: null, lastName: null, email: null, token: null, _id: null, allCountries: []}, action) => {
+const usersReducer = (state = {userImg: null, user: null, firstName: null, lastName: null, email: null, token: null, _id: null, allCountries: []}, action) => {
 
     if(action.type === 'LOG_USER') {
         localStorage.setItem('token', action.payload.token);
@@ -18,7 +18,9 @@ const usersReducer = (state = {userImg: null, firstName: null, lastName: null, e
             token: null,
             userImg : null,
             firstName : null,
-            lastName : null
+            lastName : null,
+            email: null,
+            _id: null
         }
     } else if(action.type === 'GET_ALL_COUNTRIES'){
         return {

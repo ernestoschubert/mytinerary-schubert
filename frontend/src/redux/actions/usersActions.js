@@ -38,7 +38,11 @@ const usersActions = {
                         }
                 })
                 const userCheck = {
-                    token, firstName:response.data.firstName, lastName: response.data.lastName, userImg: response.data.userImg
+                    token,
+                    firstName:response.data.firstName, 
+                    lastName: response.data.lastName, 
+                    userImg: response.data.userImg, 
+                    _id: response.data._id
                 }
                 dispatch({type:"LOG_USER", payload: userCheck})
             }catch(error) {
@@ -48,7 +52,7 @@ const usersActions = {
         }
     },
     getCountries: () => {
-        return async (dispatch,getState) => {
+        return async (dispatch, getState) => {
             try{
                 const response = await axios.get('https://restcountries.com/v2/all?fields=name')
                 dispatch({type: 'GET_ALL_COUNTRIES', payload: response.data})

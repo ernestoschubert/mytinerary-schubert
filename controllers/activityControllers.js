@@ -1,19 +1,19 @@
-const Activity = require('../models/Itinerary');
+const Activity = require('../models/Activity');
 
 const activityControllers = {
     getActivities: (req, res) => {
-        Activity.find().populate('city')
-        .then((itineraries) => res.json({ response: activities }))
+        Activity.find().populate('itinerary')
+        .then((activities) => res.json({ response: activities }))
         .catch(err => console.log(err))
     },
     postActivity: (req, res) => {
-        const {activityTitle, activityImg, actDescription, city} = req.body 
-        new Activity({activityTitle, activityImg, actDescription, city}).save()
+        const {activityTitle, activityImg, itinerary} = req.body 
+        new Activity({activityTitle, activityImg, itinerary}).save()
         .then(() => res.json({success: true}))
         .catch(err => console.log(err))
     },
     getActivity: (req, res) => {
-        Activity.findOne({_id: req.params.id}).populate('city')
+        Activity.findOne({_id: req.params.id}).populate('itinerary')
         .then((activity) => res.json({response:activity}))
         .catch(err => console.log(err))
     },
@@ -28,10 +28,10 @@ const activityControllers = {
         .catch(err => console.log(err))
     }, 
     getItineraryActivities: (req, res) => {
-        Activity.find({city: req.params.id}).populate('city')
+        Activity.find({city: req.params.id}).populate('itinerary')
         .then(activities => res.json({response:activities}))
         .catch(err => console.log(err))
     }
 }
 
-module.exports = itineraryControllers;
+module.exports = activityControllers;

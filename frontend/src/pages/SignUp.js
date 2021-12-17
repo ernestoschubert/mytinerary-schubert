@@ -5,7 +5,7 @@ import usersActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
 import PasswordToggle from '../components/PasswordToggle';
 import GoogleLogin from 'react-google-login';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const SignUp = (props) => {
 
@@ -19,7 +19,6 @@ const SignUp = (props) => {
     }, [])
     
     const { allCountries } = props;
-    console.log(allCountries.length);
 
     const [newUser, setNewUser] = useState({
       firstName: '',
@@ -144,7 +143,7 @@ const SignUp = (props) => {
                               <select  defaultValue="choose your country" onChange={inputHandler} name="country" id="select-state">
                                   <option disabled value="choose your country">Choose your country</option>
                                   {   
-                                      allCountries.length > 0 ?
+                                      typeof(allCountries) === "object" ?
                                       allCountries.map((country, index) => {
                                         return <option key={index} value={country.name}>{country.name}</option>
                                       })

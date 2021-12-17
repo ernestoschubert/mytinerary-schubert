@@ -7,7 +7,7 @@ const userControllers = {
         const {firstName, lastName, email, password, userImg, country, googleAccount} = req.body
         console.log(req)
         const hashedPassword = bcryptjs.hashSync(password)
-        const newUser = new User({firstName, lastName, email, password: hashedPassword,userImg,country, googleAccount})
+        const newUser = new User({firstName, lastName, email, password: hashedPassword, userImg, country, googleAccount})
         try {
             const repeatedUser = await User.findOne({email})
             if(repeatedUser) throw new Error
@@ -27,13 +27,13 @@ const userControllers = {
             const isPassword = bcryptjs.compareSync(password, user.password);
             if (!isPassword) throw new Error ("Email or password incorrect");
             const token = jwt.sign({...user}, process.env.SECRETKEY)
-            res.json({success: true, response:{token, firstName: user.firstName, userImg: user.userImg, lastName: user.lastName}})
+            res.json({success: true, response:{token, firstName: user.firstName, userImg: user.userImg, lastName: user.lastName, _id: user._id}})
         } catch (error) {
             res.json({success: false, response: error.message})
         }
     },
     verifyToken : (req, res) => {
-        res.json({firstName: req.user.firstName, userImg:req.user.userImg, lastName:req.user.lastName})
+        res.json({firstName: req.user.firstName, userImg:req.user.userImg, lastName:req.user.lastName, _id: req.user._id})
     },
     getUsers: (req, res) => {
         User.find()
