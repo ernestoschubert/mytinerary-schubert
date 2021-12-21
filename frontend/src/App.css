@@ -10,6 +10,7 @@ body {
     /* background-color: #000000de; */
     background-image: linear-gradient(to bottom, #252525, #1d1d1d, #161616, #0d0d0d, #000000);
     background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
 }
   
 /* HEADER */
@@ -733,6 +734,7 @@ a {
 .activity-style h4 {
     max-width: 200px;
     margin: auto;
+    height: 50px;
 }
 /* COMMENTS */
 
