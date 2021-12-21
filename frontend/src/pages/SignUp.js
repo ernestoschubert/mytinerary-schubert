@@ -5,7 +5,7 @@ import usersActions from '../redux/actions/usersActions';
 import { connect } from 'react-redux';
 import PasswordToggle from '../components/PasswordToggle';
 import GoogleLogin from 'react-google-login';
-import Swal from 'sweetalert2';
+import Alert from '../components/Alert';
 
 const SignUp = (props) => {
 
@@ -37,34 +37,17 @@ const SignUp = (props) => {
     }
     const [ errorInput, setErrorInput ] = useState({})
     
-    const Alert = Swal.mixin({
-      toast: true,
-      position: 'bottom-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: toast => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
     const onSubmit = (e) => {
       e.preventDefault()
       let info = Object.values(newUser).some(infoUser => infoUser === '')
       if(info) {
-        Alert.fire({
-          icon: 'error',
-          title: 'There are fields incomplete, please complete them'
-        })
+        Alert('error', 'There are fields incomplete, please complete them')
       } else {
         props.signUpUser(newUser)
         .then(response => {
+          console.log(response)
           if(response.data.success) {
-            Alert.fire({
-              icon: 'success',
-              title: 'Your account has been created!'
-            })
+              Alert('success', 'Your account has been created!')
           } else if (response.data.errors) {
             setErrorInput({})
             response.data.errors.map(error => setErrorInput(messageError => {
@@ -74,18 +57,13 @@ const SignUp = (props) => {
               }
             }))
           } else {
-            Alert.fire({
-              icon: 'error',
-              title: 'That email has already been used! Try with another one'
+              Alert('error',  'That email has already been used! Try with another one')
+            }
             })
-              }
-            })
-            .catch(error => {
-              Alert.fire({
-                icon: 'error',
-                title: 'We are having technicas difficulties! Come back later!'
-              })
-            })
+        .catch(error => {
+          console.log(error)
+          Alert('error', 'We are having technicas difficulties! Come back later!')
+        })
           }
         }
         
@@ -102,27 +80,18 @@ const SignUp = (props) => {
           props.signUpUser(googleUser)
           .then((response) => {
             if (response.data.success){
-              Alert.fire({
-                icon: 'success',
-                title: 'Your account has been created!'
-              })
+              Alert('success', 'Your account has been created!')
             }
             else{
               setErrorInput(response.data.error)
-              Alert.fire({
-                icon: 'error',
-                title: 'Something went wrong! Come back later!'
-              })
+              Alert('error', 'Something went wrong! Come back later!')
             }
           })
           .catch((error) => {
-            Alert.fire({
-              icon: 'error',
-                  title: 'This account is already in use.'
-                })
-              })
-              
-            }
+                console.log(error)
+                Alert('error', 'This account is already in use.')
+            })
+        }
             
             return (
               <>

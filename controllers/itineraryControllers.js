@@ -31,6 +31,21 @@ const itineraryControllers = {
         Itinerary.find({city: req.params.id}).populate('city')
         .then(itineraries => res.json({response:itineraries}))
         .catch(err => console.log(err))
+    },
+    likeItinerary:(req,res) =>{
+        Itinerary.findOne({_id: req.params.id})
+        .then((itinerary) =>{
+            if(itinerary.likes.includes(req.user._id)){
+               Itinerary.findOneAndUpdate({_id:req.params.id}, {$pull:{likes:req.user.id}},{new:true})
+               .then((newItinerary)=> res.json({success:true, response:newItinerary.likes}))
+               .catch((error) => console.log(error))
+            }else{
+                Itinerary.findOneAndUpdate({_id: req.params.id}, {$push:{likes:req.user.id}},{new:true})
+                .then((newItinerary) => res.json({success:true, response:newItinerary.likes}))
+                .catch((error) => console.log(error))
+            }
+        })
+        .catch((error) => res.json({success:false, response:error}))
     }
 }
 

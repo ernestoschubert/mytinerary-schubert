@@ -590,9 +590,8 @@ a {
     flex-direction: column;
     box-shadow: 0 0 3px gray;
     width: 85vw;
-    /* background-color: #fdfdfd; */
     background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 33%, rgb(167 167 167) 100%);
+    color: #e7e7e7;
     color: #505050;
     padding: 2rem 1rem .4rem 1rem;
     border-radius: .5rem;
@@ -610,7 +609,8 @@ a {
     justify-content: center;
     align-items: center;
     border-radius: 40%;
-    background-color: #e4e4e4;
+    /* background-color: #e4e4e4; */
+    background-color: #ffc107;
     box-shadow: 0 0 .15rem #000000c7;
 }
 .img-bg img{
@@ -653,9 +653,19 @@ a {
         width: 60vw;
     }
 }
+
 .italic-shadow {
-    font-style: italic;
-    text-shadow: 1px 1px 2px rgba(80, 80, 80, 0.925);
+    text-shadow: 0 0 1px rgba(80, 80, 80, 0.925);
+}
+
+.h2-title-itine {
+    background-color: #3e96df8f;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    color: white;
+    text-shadow: 0 0 0.2rem black;
+    box-shadow: 1px 1px .2rem grey;
+    border-radius: 1rem;
 }
 
 .no-itine h4{
@@ -697,7 +707,7 @@ a {
 }
 /* ACTIVITIES */
 .cont-act-comments {
-    background-color: #eeeeee;
+    background-color: #ffffff;
 }
 .act-cont {
     display: flex;
@@ -741,15 +751,16 @@ a {
 .comments-cont {
     width: 600px;
     margin-top: .5rem;
-    height: 300px;
+    height: 250px;
     background-color: #ffffff;
-    box-shadow: 0 0 .2rem #000000;
+    box-shadow: 0 0 .1rem #000000;
     border-radius: .4rem .4rem 0 0;
 }
 .user-msg {
     width: 600px;
     height: 40px;
-    box-shadow: 0 0 .2rem #000000;
+    box-shadow: 0 0 .1rem #000000;
+    font-size: 1rem;
     border: none;
     outline: none;
     padding: 1rem;

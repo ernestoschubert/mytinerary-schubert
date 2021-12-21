@@ -5,24 +5,18 @@ import Activities from './Activities';
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/itinerariesActions';
 import Comments from './Comments';
+import Alert from './Alert';
 
 const Itineraries = (props) => {
 
     const {id} = useParams()
     const {_id, src, firstName, lastName, likes, title, price, duration, hastags} = props.itinerary;
-
     const [viewMoreLess, setViewMoreLess] = useState(false);
-
-    const [like, setLike] = useState(false);
-    
     const [activity, setActivities] = useState([]);
+    const [like, setLike] = useState(false);
+    const [itinerariesLikes, setItinerariesLikes] = useState(likes)
 
-    // useEffect(() => {
-    //     props.getItineraryActivities(_id)
-    //     .then(res => setActivities(res))
-    //     .catch(err => console.log(err))
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
+    const likeOrDislike = itinerariesLikes.includes(props._id) ? '/assets/heart-red.png' : '/assets/heart.png';
 
     async function getActivities() {
         try {
@@ -34,18 +28,23 @@ const Itineraries = (props) => {
             console.error(err)
         }
     }
-    
-    
-    
-    const onClickLike = (e) => {
-        e.preventDefault()
-    }
 
     const handlerActivities = () => {
         setViewMoreLess(!viewMoreLess)
         getActivities()
     }
 
+    const likeItinerary = async () => {
+        if(!props.token){
+            Alert('error', 'You must be logged in to like this post')
+        }else{
+            let response = await props.likeItinerary(_id, props.token)
+            setItinerariesLikes(response.data.response)
+        }
+        setLike(true)
+    }
+
+    console.log(props.user)
     return (
         <div key={_id} className="itineraries-container mb-2 mt-2">
             <div className="cont-likes-publisher">
@@ -62,21 +61,20 @@ const Itineraries = (props) => {
                 </div>
                 <div className="ms-4">
                     <div className="likes">
-                        <img onClick={() => setLike(!like)} 
-                            src={like ? '/assets/heart-red.png' : '/assets/heart.png'} 
-                            className='like-heart' 
-                            width=""
+                        <img onClick={!like ? likeItinerary : null} 
+                            src={likeOrDislike}
+                            className='like-heart'
                             alt='heart'
                         />
-                        <span onClick={(e) => onClickLike(e)} className="cont-likes">
-                            {likes.length === 1? likes : likes.length}
+                        <span className="cont-likes">
+                            {likes.length === 1? likes : likes.length - 1}
                         </span>
                     </div>
                 </div>
             </div>
             <div className="cont-info-it">
                 <div>
-                    <h2 className="mb-5 mt-2 italic-shadow">{title}</h2>
+                    <h2 className="mb-5 mt-2 h2-title-itine italic-shadow">{title}</h2>
                 </div>
                 <div className="it-info">
                     <p className="italic-shadow">
@@ -111,12 +109,15 @@ const Itineraries = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        token: state.users.token
+        token: state.users.token,
+        _id: state.users._id,
+        user: state.users.user
     }
 }
 
 const mapDispatchToProps = {
-    getItineraryActivities: itinerariesActions.getItineraryActivities
+    getItineraryActivities: itinerariesActions.getItineraryActivities,
+    likeItinerary: itinerariesActions.likeItinerary
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Itineraries);

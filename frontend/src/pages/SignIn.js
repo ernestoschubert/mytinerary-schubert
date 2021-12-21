@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import usersActions from "../redux/actions/usersActions";
 import PasswordToggle from '../components/PasswordToggle';
 import GoogleLogin from 'react-google-login';
-import Swal from 'sweetalert2';
+import Alert from '../components/Alert';
 
 const SignIn = (props) => {
 
@@ -14,18 +14,6 @@ const SignIn = (props) => {
     const [logInUser, setLogInUser] = useState({
         email: "",
         password: ""
-    })
-
-    const Alert = Swal.mixin({
-        toast: true,
-        position: 'bottom-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: toast => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
     })
 
     const inputHandler = (e) => {
@@ -39,29 +27,20 @@ const SignIn = (props) => {
         e.preventDefault()
         let info = Object.values(logInUser).some(infoUser => infoUser === "")
         if(info) {
-            Alert.fire({
-                icon: 'error',
-                title: 'There are fields incomplete, please complete them'
-            })
+            Alert('error', 'There are fields incomplete, please complete them')
         } else {
             props.signInUser(logInUser)
             .then(response => {
                 if(!response.data.success) {
-                     Alert.fire({
-                     icon: 'error',
-                     title: 'Email or password incorrect'
-                   })
+                   Alert('error', 'Email or password incorrect')
                 } else {
-                    Alert.fire({
-                        icon: 'success',
-                        title: 'Welcome! You have been successfully logged'
-                    })
+                    Alert('success', 'Welcome! You have been successfully logged')
                 }
             })
-            .catch(error => Alert.fire({
-                icon: 'error',
-                title: 'Email or password incorrect'
-            }))
+            .catch(error => {
+                console.log(error)
+                Alert('error', 'Email or password incorrect')
+            })
         }
     }
 
@@ -74,18 +53,12 @@ const SignIn = (props) => {
         props.signInUser(googleUser)
         .then((response) => {
             if (response.data.success){
-                Alert.fire({
-                    icon: 'success',
-                     title: 'Welcome! You have been successfully logged'
-                  })
+                Alert('success', 'Welcome! You have been successfully logged')
             }
         })
         .catch((error) => {
             console.log(error)
-            Alert.fire({
-                icon: 'error',
-                title: 'You have to sign up before you log in!'
-              })
+            Alert('error', 'You have to sign up before you log in!')
         })
     }
 
