@@ -28,7 +28,7 @@ const activityControllers = {
         .catch(err => console.log(err))
     }, 
     getItineraryActivities: (req, res) => {
-        Activity.find({city: req.params.id}).populate('itinerary')
+        Activity.find({itinerary: req.params.id}).populate('itinerary')
         .then(activities => res.json({response:activities}))
         .catch(err => console.log(err))
     }

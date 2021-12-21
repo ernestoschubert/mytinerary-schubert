@@ -19,10 +19,11 @@ class City extends React.Component {
         this.props.getCityItineraries(this.id);
     }
 
+
     render() {
 
         const { cities, itinerary, city } = this.props
-        console.log(this.props.user)
+        
         return (   
          <>
             <Header />
@@ -62,15 +63,14 @@ const mapStateToProps = (state) => {
     return {
         cities: state.cities.citiesArray,
         city: state.cities.city,
-        itinerary: state.itineraries.itinerary,
-        user: state.users.user
+        itinerary: state.itineraries.itinerary
     }
 }
 
 const mapDispatchToProps = {
     getCities: citiesActions.getCities,
     getCity: citiesActions.getCity,
-    getCityItineraries: itinerariesActions.getCityItineraries,
+    getCityItineraries: itinerariesActions.getCityItineraries
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

@@ -2,21 +2,50 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 import Activities from './Activities';
+import { connect } from 'react-redux';
+import itinerariesActions from '../redux/actions/itinerariesActions';
+import Comments from './Comments';
 
 const Itineraries = (props) => {
 
     const {id} = useParams()
+    const {_id, src, firstName, lastName, likes, title, price, duration, hastags} = props.itinerary;
 
     const [viewMoreLess, setViewMoreLess] = useState(false);
 
-    const {_id, src, firstName, lastName, likes, title, price, duration, hastags} = props.itinerary;
+    const [like, setLike] = useState(false);
+    
+    const [activity, setActivities] = useState([]);
 
-    const [like, setLike] = useState(false)
+    // useEffect(() => {
+    //     props.getItineraryActivities(_id)
+    //     .then(res => setActivities(res))
+    //     .catch(err => console.log(err))
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
 
+    async function getActivities() {
+        try {
+            let res = await props.getItineraryActivities(_id)
+            if(res) {
+                setActivities(res)
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    }
+    
+    
+    
     const onClickLike = (e) => {
         e.preventDefault()
-        // props.userLike(props._id)
     }
+
+    const handlerActivities = () => {
+        setViewMoreLess(!viewMoreLess)
+        getActivities()
+    }
+
     return (
         <div key={_id} className="itineraries-container mb-2 mt-2">
             <div className="cont-likes-publisher">
@@ -40,7 +69,7 @@ const Itineraries = (props) => {
                             alt='heart'
                         />
                         <span onClick={(e) => onClickLike(e)} className="cont-likes">
-                            {likes.length === 1 && likes[0] === 0 ? likes : likes.length}
+                            {likes.length === 1? likes : likes.length}
                         </span>
                     </div>
                 </div>
@@ -65,17 +94,13 @@ const Itineraries = (props) => {
             </div>
             <Accordion defaultActiveKey="0" className="mt-4">
                 <Accordion.Item eventKey="1">
-                    <Accordion.Header onClick={() => setViewMoreLess(!viewMoreLess)}>
+                    <Accordion.Header onClick={() => handlerActivities()}>
                         { viewMoreLess ?  "View less" : "View more"}
                     </Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Body className='cont-act-comments'>
                             <div className="itinerary-div">
-                                <Activities />
-                                <p className="underconst"> Under Construction </p>
-                                <img src="/assets/underconstruction.png" width="200" 
-                                    className="mb-4" 
-                                    alt="under construction"
-                                />
+                                <Activities activities={activity} />
+                                <Comments />
                             </div>
                         </Accordion.Body>
                 </Accordion.Item>
@@ -83,4 +108,15 @@ const Itineraries = (props) => {
         </div>
     )
 }
-export default Itineraries;
+
+const mapStateToProps = (state) => {
+    return {
+        token: state.users.token
+    }
+}
+
+const mapDispatchToProps = {
+    getItineraryActivities: itinerariesActions.getItineraryActivities
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Itineraries);
