@@ -10,7 +10,7 @@ import Alert from './Alert';
 const Itineraries = (props) => {
 
     const {id} = useParams()
-    const {_id, src, firstName, lastName, likes, title, price, duration, hastags} = props.itinerary;
+    const {_id, src, firstName, lastName, likes, title, price, duration, hastags, comments} = props.itinerary;
     const [viewMoreLess, setViewMoreLess] = useState(false);
     const [activity, setActivities] = useState([]);
     const [like, setLike] = useState(false);
@@ -44,7 +44,6 @@ const Itineraries = (props) => {
         setLike(true)
     }
 
-    console.log(props.user)
     return (
         <div key={_id} className="itineraries-container mb-2 mt-2">
             <div className="cont-likes-publisher">
@@ -98,7 +97,7 @@ const Itineraries = (props) => {
                         <Accordion.Body className='cont-act-comments'>
                             <div className="itinerary-div">
                                 <Activities activities={activity} />
-                                <Comments />
+                                <Comments itineraryId={_id} itineraryComments={comments}/>
                             </div>
                         </Accordion.Body>
                 </Accordion.Item>

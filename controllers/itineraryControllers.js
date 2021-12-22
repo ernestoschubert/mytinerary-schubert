@@ -1,4 +1,5 @@
 const Itinerary = require('../models/Itinerary');
+const User = require('../models/User')
 
 const itineraryControllers = {
     getItineraries: (req, res) => {
@@ -28,7 +29,7 @@ const itineraryControllers = {
         .catch(err => console.log(err))
     }, 
     getCityItineraries: (req, res) => {
-        Itinerary.find({city: req.params.id}).populate('city')
+        Itinerary.find({city: req.params.id}).populate('comments.userId')
         .then(itineraries => res.json({response:itineraries}))
         .catch(err => console.log(err))
     },
@@ -46,7 +47,71 @@ const itineraryControllers = {
             }
         })
         .catch((error) => res.json({success:false, response:error}))
-    }
+    },
+
+    getAllComments: async(req, res)=>{
+        try {
+           const itineraryId = req.params.id
+           var itinerarySelected = await Itinerary.findOne({_id:itineraryId})
+        }catch(err){
+           console.log('getAllComments catch: ', err)
+        }
+        res.json({response: itinerarySelected.comments})
+    },
+
+    addNewComment: async(req, res)=>{
+        try {
+            var {userId, comment, itineraryId } = req.body
+            var userInfo = await User.findOne({_id: userId})
+            var itineraryCommented = await Itinerary.findOneAndUpdate(
+                {_id: itineraryId},
+                {$push: {comments: {userId, userName: userInfo.firstName, userImg: userInfo.userImg, comment}}}, 
+                {new: true}
+            ) 
+        }catch (err){
+            console.log('addNewComment catch: ', err)
+        }
+        res.json({response: itineraryCommented.comments})
+    },
+
+    editComment: async(req, res)=>{
+        console.log("edit commet: ", req.body)
+        try {
+            const itineraryId = req.params.id
+            const commentId = req.body.commentId
+            const newComment = req.body.newComment
+
+            // var itineraryToModify = await Itinerary.findOne({_id: itineraryId})
+            // var commentToModify = itineraryToModify.comments.find(comment => comment._id = commentId)       
+            
+            var itineraryModified = await Itinerary.findOneAndUpdate( 
+                {_id: itineraryId, "comments.userId": commentId},  
+                {$set: {"comments.$.comment": newComment}},            
+                {new: true}
+            )
+            console.log(" itineraryModified: ",itineraryModified)
+        }catch(err){
+            console.log('editComment catch: ', err)
+        }
+        res.json({response: itineraryModified.comments})
+    },
+
+    deleteComment: async(req, res)=>{
+        console.log("delete req body: ", req.body)
+        try {
+            const itineraryId = req.body.itineraryId
+            const commentId = req.body.commentId
+            var itineraryModified = await Itinerary.findOneAndUpdate(
+                {_id: itineraryId},
+                {$pull: {comments: {_id: commentId}}}, 
+                {new: true}
+            ) 
+
+        }catch(err){
+            console.log('deleteComment catch: ', err)
+        }
+        res.json({response: itineraryModified.comments})
+    }  
 }
 
 module.exports = itineraryControllers;

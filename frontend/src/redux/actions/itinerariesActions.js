@@ -4,7 +4,6 @@ const itinerariesActions = {
     getCityItineraries: (id) => {
         return async(dispatch, getState) => {
             const res = await axios.get(`http://localhost:4000/api/itineraries/city/${id}`)
-            console.log(res.data.response)
             dispatch({type: 'GET_CITY_ITINERARY', payload: res.data.response})
         }
     },
@@ -21,7 +20,6 @@ const itinerariesActions = {
             }
         }
     },
-    
     likeItinerary: (id, token) =>{
         return async () => {
                 try{
@@ -35,10 +33,27 @@ const itinerariesActions = {
                     console.error(error)
                 }
         }
+    },    
+    sendComment: (commentInfo)=>{
+        return async() => {
+            const response = await axios.post('http://localhost:4000/api/itinerary/comments', commentInfo)
+            console.log(response)
+            return response
+        }
     },
-    Comment: async(req, res) => {
-
+    deleteComment: (IDs)=> {
+        return async() => {
+            const response = await axios.delete('http://localhost:4000/api/itinerary/comments', {data: IDs}) 
+            return response.data.response
+        }
+    },
+    editComment: (itineraryId, commentInfo)=> {
+        return async() => {
+            const response = await axios.put('http://localhost:4000/api/itinerary/comments/' + itineraryId, commentInfo )
+            return response.data.response
+        }
     }
+
 }
 
 export default itinerariesActions;

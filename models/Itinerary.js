@@ -11,7 +11,9 @@ const itinerarySchema = new mongoose.Schema({
     title: {type: String, required: true},
     comments: [{ 
         comment: {type: String},
-        user: {type: mongoose.Types.ObjectId, ref: 'user'}
+        userImg: {type: String},
+        userName: {type: String},
+        userId: {type: mongoose.Types.ObjectId, ref: 'user'}
          }],
     city: {type: mongoose.Types.ObjectId, ref: 'city'}
 });
