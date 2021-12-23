@@ -14,8 +14,7 @@ const Itineraries = (props) => {
     const [viewMoreLess, setViewMoreLess] = useState(false);
     const [activity, setActivities] = useState([]);
     const [like, setLike] = useState(false);
-    const [itinerariesLikes, setItinerariesLikes] = useState(likes)
-
+    const [itinerariesLikes, setItinerariesLikes] = useState(likes);
     const likeOrDislike = itinerariesLikes.includes(props._id) ? '/assets/heart-red.png' : '/assets/heart.png';
 
     async function getActivities() {
@@ -116,7 +115,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     getItineraryActivities: itinerariesActions.getItineraryActivities,
-    likeItinerary: itinerariesActions.likeItinerary
+    likeItinerary: itinerariesActions.likeItinerary,
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Itineraries);

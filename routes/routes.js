@@ -5,8 +5,8 @@ const userControllers = require("../controllers/userControllers");
 const activityControllers = require('../controllers/activityControllers');
 const { getCities, postCity, getCity, deleteCity, putCity  } = citiesControllers;
 const { getItineraries, postItinerary, getItinerary, deleteItinerary, putItinerary, getCityItineraries, likeItinerary, getAllComments, addNewComment, editComment, deleteComment} =  itineraryControllers;
-const {addNewUser, signInUser, getUsers, getUser, deleteUser, putUser, verifyToken} = userControllers;
-const {getActivities, postActivity, getActivity, deleteActivity, putActivity, getItineraryActivities} = activityControllers;
+const { addNewUser, signInUser, getUsers, getUser, deleteUser, putUser, verifyToken } = userControllers;
+const { getActivities, postActivity, getActivity, deleteActivity, putActivity, getItineraryActivities } = activityControllers;
 const validator = require("../controllers/validator");
 const passport = require('../config/passport');
 

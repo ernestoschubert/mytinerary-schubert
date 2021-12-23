@@ -37,7 +37,6 @@ const itinerariesActions = {
     sendComment: (commentInfo)=>{
         return async() => {
             const response = await axios.post('http://localhost:4000/api/itinerary/comments', commentInfo)
-            console.log(response)
             return response
         }
     },
@@ -53,7 +52,6 @@ const itinerariesActions = {
             return response.data.response
         }
     }
-
 }
 
 export default itinerariesActions;

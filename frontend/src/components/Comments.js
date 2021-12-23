@@ -14,12 +14,13 @@ import Swal from 'sweetalert2'
 toast.configure()
 
 const Comments = (props)=>{
-    const {itineraryId, userLogged} = props
+    const {itineraryId, userLogged, itineraryComments} = props
 
-    const [allComments, setAllComments] = useState([])
-    const [commentContent, setCommentContent] = useState('')
-    const [isEditingComment, setIsEditingComment] = useState(false)
-    const [editedComment, setEditedComment] = useState('')
+
+    const [allComments, setAllComments] = useState(itineraryComments);
+    const [commentContent, setCommentContent] = useState('');
+    const [isEditingComment, setIsEditingComment] = useState(false);
+    const [editedComment, setEditedComment] = useState('');
 
     const sendComment = async() => {
         if(commentContent !== ''){
@@ -79,7 +80,6 @@ const Comments = (props)=>{
             </div>
             <div className="all-comments-container">
                 {allComments.map((comment, i) => {
-                    console.log(comment)
                     return (
                         <div className="comment" key={i}>
                         <div className="x-alineator">
@@ -125,7 +125,7 @@ const Comments = (props)=>{
                 })}
             </div>
                 <div className="input-container">
-                    <input type="text" value={commentContent} onChange={(e)=> setCommentContent(e.target.value)} className="comments-input" placeholder="Send a comment" />
+                    <input type="text" value={commentContent} onChange={(e)=> setCommentContent(e.target.value)} className="comments-input" placeholder="Send comment" />
                     
                     <div className="paperPlane-icon" onClick={userLogged ? sendComment : () => notify('Comment')}>
                         <FontAwesomeIcon icon={faPaperPlane} />

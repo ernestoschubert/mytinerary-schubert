@@ -48,7 +48,6 @@ const itineraryControllers = {
         })
         .catch((error) => res.json({success:false, response:error}))
     },
-
     getAllComments: async(req, res)=>{
         try {
            const itineraryId = req.params.id
@@ -58,7 +57,6 @@ const itineraryControllers = {
         }
         res.json({response: itinerarySelected.comments})
     },
-
     addNewComment: async(req, res)=>{
         try {
             var {userId, comment, itineraryId } = req.body
@@ -73,17 +71,12 @@ const itineraryControllers = {
         }
         res.json({response: itineraryCommented.comments})
     },
-
     editComment: async(req, res)=>{
         console.log("edit commet: ", req.body)
         try {
             const itineraryId = req.params.id
             const commentId = req.body.commentId
             const newComment = req.body.newComment
-
-            // var itineraryToModify = await Itinerary.findOne({_id: itineraryId})
-            // var commentToModify = itineraryToModify.comments.find(comment => comment._id = commentId)       
-            
             var itineraryModified = await Itinerary.findOneAndUpdate( 
                 {_id: itineraryId, "comments.userId": commentId},  
                 {$set: {"comments.$.comment": newComment}},            
@@ -95,7 +88,6 @@ const itineraryControllers = {
         }
         res.json({response: itineraryModified.comments})
     },
-
     deleteComment: async(req, res)=>{
         console.log("delete req body: ", req.body)
         try {

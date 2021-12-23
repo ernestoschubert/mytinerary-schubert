@@ -1,5 +1,4 @@
 const usersReducer = (state = {userImg: null, user: null, firstName: null, lastName: null, email: null, token: null, _id: null, allCountries: []}, action) => {
-
     if(action.type === 'LOG_USER') {
         localStorage.setItem('token', action.payload.token);
         return {
