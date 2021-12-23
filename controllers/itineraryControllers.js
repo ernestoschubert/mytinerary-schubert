@@ -1,5 +1,5 @@
 const Itinerary = require('../models/Itinerary');
-const User = require('../models/User')
+const User = require('../models/User');
 
 const itineraryControllers = {
     getItineraries: (req, res) => {
@@ -72,7 +72,6 @@ const itineraryControllers = {
         res.json({response: itineraryCommented.comments})
     },
     editComment: async(req, res)=>{
-        console.log("edit commet: ", req.body)
         try {
             const itineraryId = req.params.id
             const commentId = req.body.commentId
@@ -82,14 +81,12 @@ const itineraryControllers = {
                 {$set: {"comments.$.comment": newComment}},            
                 {new: true}
             )
-            console.log(" itineraryModified: ",itineraryModified)
         }catch(err){
             console.log('editComment catch: ', err)
         }
         res.json({response: itineraryModified.comments})
     },
     deleteComment: async(req, res)=>{
-        console.log("delete req body: ", req.body)
         try {
             const itineraryId = req.body.itineraryId
             const commentId = req.body.commentId

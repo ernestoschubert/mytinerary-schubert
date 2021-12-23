@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 import Activities from './Activities';
