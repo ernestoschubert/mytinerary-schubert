@@ -21,6 +21,7 @@ const Comments = (props)=>{
     const [commentContent, setCommentContent] = useState('');
     const [isEditingComment, setIsEditingComment] = useState(false);
     const [editedComment, setEditedComment] = useState('');
+    const [commentBeingEdited, setCommentBeingEdited] = useState('');
 
     const sendComment = async() => {
         if(commentContent !== ''){
@@ -57,9 +58,10 @@ const Comments = (props)=>{
         })
     }
 
-    const startEditingComment = (value)=>{
+    const startEditingComment = (value, commentId)=>{
         setIsEditingComment(!isEditingComment)
         setEditedComment(value)
+        setCommentBeingEdited(commentId)
     }
 
     const sendEditedComment = async(itineraryId, commentInfo)=>{
@@ -67,6 +69,7 @@ const Comments = (props)=>{
         const response = await props.editComment(itineraryId, commentInfo)
         setAllComments(response)
     }
+
 
     const notify = (error)=>{
         toast.error(`Must be logged to ${error}!`)
@@ -105,17 +108,19 @@ const Comments = (props)=>{
                                 
                                 {userLogged && comment.userId === userLogged._id && (
                                     <>
-                                    <input type="text" value={editedComment} onChange={(e)=> setEditedComment(e.target.value)} className={isEditingComment ? "editingInput": "displayNone"} />
+                                    <input type="text" 
+                                    value={commentBeingEdited === comment._id ? editedComment : comment.comment}
+                                    onChange={(e)=> setEditedComment(e.target.value)} className={isEditingComment ? "editingInput": "displayNone"} />
                                     <IoSend className={isEditingComment ? "sendEditedIcon": "displayNone"} 
                                     onClick={()=>
-                                        sendEditedComment(itineraryId, {commentId: comment.userId, newComment: editedComment})} />
+                                        sendEditedComment(itineraryId, {commentId: comment._id, newComment: editedComment})} />
                                     </>
                                 )}
                             </div>
 
                             {userLogged && comment.userId === userLogged._id && (
                                 <div className="modifyCommentIcons-container">
-                                    <FaRegEdit  onClick={()=> startEditingComment(comment.comment)} className={!isEditingComment ? "edit-icon" : "displayNone"} />
+                                    <FaRegEdit  onClick={()=> startEditingComment(comment.comment, comment._id)} className={!isEditingComment ? "edit-icon" : "displayNone"} />
                                     <FaTrashAlt onClick={()=> deleteSingleComment({itineraryId: itineraryId, commentId: comment._id})} className={!isEditingComment ? "delete-icon" : "displayNone"}/>
                                 </div>
                             )}

@@ -77,7 +77,7 @@ const itineraryControllers = {
             const commentId = req.body.commentId
             const newComment = req.body.newComment
             var itineraryModified = await Itinerary.findOneAndUpdate( 
-                {_id: itineraryId, "comments.userId": commentId},  
+                {_id: itineraryId, "comments._id": commentId},  
                 {$set: {"comments.$.comment": newComment}},            
                 {new: true}
             )
@@ -95,7 +95,6 @@ const itineraryControllers = {
                 {$pull: {comments: {_id: commentId}}}, 
                 {new: true}
             ) 
-
         }catch(err){
             console.log('deleteComment catch: ', err)
         }

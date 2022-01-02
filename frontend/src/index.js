@@ -9,7 +9,6 @@ import rootReducer from './redux/reducers/rootReducer';
 const reduxStore = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  // <React.StrictMode>
     <Provider store={reduxStore}>
       <App />
     </Provider>,
