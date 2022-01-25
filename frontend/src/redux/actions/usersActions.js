@@ -5,7 +5,7 @@ const usersActions = {
 
     signUpUser: (newUser) => {
         return async(dispatch, getState) => {    
-            const response = await axios.post('http://localhost:4000/api/users/signup', {...newUser})
+            const response = await axios.post('https://mytinerary-schubert.herokuapp.com/api/users/signup', {...newUser})
             if(response.data.success) {
                 dispatch({type:'LOG_USER', payload: response.data.response});
             } else {
@@ -15,7 +15,7 @@ const usersActions = {
     },
     signInUser: (logInUser) => {
         return async(dispatch, getState) => {
-            const response = await axios.post('http://localhost:4000/api/users/signin', {...logInUser})
+            const response = await axios.post('https://mytinerary-schubert.herokuapp.com/api/users/signin', {...logInUser})
             if(response.data.success){
                 dispatch({type: 'LOG_USER', payload: response.data.response})
             } else {
@@ -32,7 +32,7 @@ const usersActions = {
     signInUserLS: (token) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.get('http://localhost:4000/api/verifytoken', {
+                const response = await axios.get('https://mytinerary-schubert.herokuapp.com/api/verifytoken', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         }
