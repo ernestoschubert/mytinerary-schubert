@@ -13,8 +13,9 @@ const Itineraries = (props) => {
     const {_id, src, firstName, lastName, likes, title, price, duration, hastags, comments} = props.itinerary;
     const [viewMoreLess, setViewMoreLess] = useState(false);
     const [activity, setActivities] = useState([]);
-    const [like, setLike] = useState(false);
+    const [like, setLike] = useState(true);
     const [itinerariesLikes, setItinerariesLikes] = useState(likes);
+
     const likeOrDislike = itinerariesLikes.includes(props._id) ? '/assets/heart-red.png' : '/assets/heart.png';
 
     async function getActivities() {
@@ -34,6 +35,7 @@ const Itineraries = (props) => {
     }
 
     const likeItinerary = async () => {
+        setLike(false)
         if(!props.token){
             Alert('error', 'You must be logged in to like this post')
         }else{
@@ -59,13 +61,13 @@ const Itineraries = (props) => {
                 </div>
                 <div className="ms-4">
                     <div className="likes">
-                        <img onClick={!like ? likeItinerary : null} 
+                        <img onClick={like ? likeItinerary : null} 
                             src={likeOrDislike}
                             className='like-heart'
                             alt='heart'
                         />
                         <span className="cont-likes">
-                            {likes.length === 1? likes : likes.length - 1}
+                            {itinerariesLikes.length}
                         </span>
                     </div>
                 </div>

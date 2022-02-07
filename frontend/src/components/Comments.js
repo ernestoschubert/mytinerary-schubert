@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons'
@@ -35,6 +35,10 @@ const Comments = (props)=>{
         const response = await props.deleteComment(IDs)
         setAllComments(response)
     }
+    
+    useEffect(() => {
+        setAllComments(itineraryComments)
+    }, [userLogged]);
     
 
     const deleteSingleComment = async(IDs)=>{
@@ -92,21 +96,24 @@ const Comments = (props)=>{
                             <div className="commentContent-container">
                                 
                             
-                            
-                                <p className={userLogged ? comment.userId === userLogged._id 
-                                    ? !isEditingComment ? "comment-author" : "displayNone"
-                                    : "comment-author" 
-                                : "comment-author"}>
+                                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', maxWidth: '290px'}}>
+                                <p className="comment-author">
                                     <strong> {comment.userName}</strong>
                                 </p>
+                                {( userLogged && comment.userId === userLogged._id ) && (
+                                    <div className="modifyCommentIcons-container">
+                                        <FaRegEdit  onClick={()=> startEditingComment(comment.comment, comment._id)} className={!isEditingComment ? "edit-icon" : "displayNone"} />
+                                        <FaTrashAlt onClick={()=> deleteSingleComment({itineraryId: itineraryId, commentId: comment._id})} className={!isEditingComment ? "delete-icon" : "displayNone"}/>
+                                    </div>
+                                )}
+                                </div>
+
                                 
-                                <p className={ userLogged ? comment.userId === userLogged._id
-                                    ? !isEditingComment ? "comment-content" : "displayNone"
-                                    : "comment-content"
-                                : "comment-content"
-                                } >{comment.comment}</p>
+                                <p className={ !isEditingComment ? "comment-content" : "displayNone" }>
+                                    {comment.comment}
+                                </p>
                                 
-                                {userLogged && comment.userId === userLogged._id && (
+                                {(userLogged && comment.userId === userLogged._id) && (
                                     <>
                                     <input type="text" 
                                     value={commentBeingEdited === comment._id ? editedComment : comment.comment}
@@ -118,12 +125,7 @@ const Comments = (props)=>{
                                 )}
                             </div>
 
-                            {userLogged && comment.userId === userLogged._id && (
-                                <div className="modifyCommentIcons-container">
-                                    <FaRegEdit  onClick={()=> startEditingComment(comment.comment, comment._id)} className={!isEditingComment ? "edit-icon" : "displayNone"} />
-                                    <FaTrashAlt onClick={()=> deleteSingleComment({itineraryId: itineraryId, commentId: comment._id})} className={!isEditingComment ? "delete-icon" : "displayNone"}/>
-                                </div>
-                            )}
+                            
                         </div>
                         </div>
                     )

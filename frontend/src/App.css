@@ -750,14 +750,10 @@ a {
 .all-comments-container {
     height: 250px;
     width: 400px;
-    flex-grow: 1;
-    overflow-x: scroll; 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    max-width: 100%;
+    overflow-y: scroll;
     font-size: 1.2rem;
-    padding: 1rem 1rem;
+    padding: 1rem 1rem 0 1rem;
     border-radius:.9rem .9rem 0 0;
     box-shadow: 0px 0px .15rem gray;
     color: #000000;
@@ -765,8 +761,8 @@ a {
 }
 .comment {
   width: fit-content;
-  min-height: 50px;
   font-size: 1rem;
+  max-width: 100%;
   border-radius: 0 1rem 1rem 1rem;
   padding: .3rem 1rem .3rem .3rem;
   background-color: rgb(255, 255, 255);
@@ -776,46 +772,43 @@ a {
 }
 
 .comment-content {
-    min-height: 40px;
-    max-width: 300px;
-    width: 250px;
+    min-height: 25px;
+    max-width: 95%;
     padding-left: 0.8rem;
 }
 
+
 .all-comments-container::-webkit-scrollbar {
     -webkit-appearance: none;
-  }
-  
-  .all-comments-container::-webkit-scrollbar:vertical {
-    width:10px;
-  }
-  
-  .all-comments-container::-webkit-scrollbar-button:increment, .all-comments-container::-webkit-scrollbar-button {
+}
+
+.all-comments-container::-webkit-scrollbar:vertical {
+    min-width: 10px;
+}
+
+.all-comments-container::-webkit-scrollbar-button:increment, .all-comments-container::-webkit-scrollbar-button {
     display: none;
-  } 
-  
-  .all-comments-container::-webkit-scrollbar:horizontal {
-    height: 10px;
-  }
-  
-  .all-comments-container::-webkit-scrollbar-thumb {
+} 
+
+.all-comments-container::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
-  }
-  
-  .all-comments-container::-webkit-scrollbar-track {
+}
+
+.all-comments-container::-webkit-scrollbar-track {
     border-radius: 10px;  
-  }
+}
 
 .x-alineator{
-  display: flex;
+    display: flex;
 }
 
 .authorComment-img {
-  width: 28px;
-  height: 28px;
+  width: 35px;
+  height: 35px;
   object-fit: cover;
   border-radius: .9rem;
+  box-shadow: 0px 0px 5px #b8b8b8;
   background-position: center;
   background-size: cover;
 }
@@ -833,7 +826,6 @@ a {
 .comment-author {
   margin-bottom: 0px;
   color: #6d6d6d;
-  display: inline-block;
 }
 
 .comment-author:hover {
@@ -845,11 +837,15 @@ a {
 .input-container {
     display: flex;
     font-size: 1rem;
+    max-width: 400px;
+    height: auto;
+    width: 100%;
     flex-direction: column;
 }
 
 .input-container input {
     width: 400px;
+    max-width: 100%;
     outline: none;
     border: none;
     padding: .4rem 1rem .4rem 3rem;
@@ -870,7 +866,7 @@ a {
     align-items: center;
     justify-content: center;
     border-right: 1px solid #858585;
-    color: #4848ff;
+    color: #898996;
 }
 
 .paperPlane-icon:hover {
@@ -883,39 +879,42 @@ a {
     border-radius: .7rem;
     padding: .3rem;
     outline: none;
-    border: 2px solid #000000;
+    border: 1px solid #4b4b4b;
 }
 .displayNone {
     display: none;
 }
 
 .edit-icon {
-  width: 1rem;
-  margin-left: .4rem;
+    width: 1rem;
+    margin-left: .4rem;
+    transition: .3s;
 }
 
 .edit-icon:hover {
     color: #198b19;
     cursor: pointer;
+    transition: .3s;
 }
 
 .delete-icon {
-  width: 1rem;
-  margin-left: .4rem;
+    width: .8rem;
+    transition: .3s;
+    margin-left: .4rem;
 }
 
 .delete-icon:hover {
     color: #ff1616;
+    transition: .3s;
     cursor: pointer;
 }
 .modifyCommentIcons-container {
     display: flex;
     font-size: 1.1rem;
-    height: 3.4rem;
     align-self: center;
 }
 .sendEditedIcon {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-left: .4rem;
 }
 
