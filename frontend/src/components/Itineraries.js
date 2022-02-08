@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 import Activities from './Activities';
@@ -14,7 +14,14 @@ const Itineraries = (props) => {
     const [viewMoreLess, setViewMoreLess] = useState(false);
     const [activity, setActivities] = useState([]);
     const [like, setLike] = useState(true);
-    const [itinerariesLikes, setItinerariesLikes] = useState(likes);
+    const [itinerariesLikes, setItinerariesLikes] = useState([]);
+
+
+    useEffect(() => {
+        setItinerariesLikes(likes)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [_id]);
+    
 
     const likeOrDislike = itinerariesLikes.includes(props._id) ? '/assets/heart-red.png' : '/assets/heart.png';
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { connect } from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons'
@@ -36,11 +36,6 @@ const Comments = (props)=>{
         setAllComments(response)
     }
     
-    useEffect(() => {
-        setAllComments(itineraryComments)
-    }, [userLogged]);
-    
-
     const deleteSingleComment = async(IDs)=>{
         Swal.fire({
             title: 'Are you sure?',
